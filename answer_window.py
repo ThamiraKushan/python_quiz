@@ -9,12 +9,21 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from quession import QuessionAnswer
 
 
 class Ui_MainWindow(object):
+
+    current_question=0
+
+    def __init__(self,data):
+        self.data = data
+
     def setupUi(self, MainWindow):
+
+        
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(460, 319)
+        MainWindow.resize(1460, 1319)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -32,7 +41,7 @@ class Ui_MainWindow(object):
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setObjectName("frame_2")
         self.label_4 = QtWidgets.QLabel(self.frame_2)
-        self.label_4.setGeometry(QtCore.QRect(40, 55, 331, 20))
+        self.label_4.setGeometry(QtCore.QRect(400, 355, 33, 20))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.label_4.setFont(font)
@@ -41,31 +50,30 @@ class Ui_MainWindow(object):
         self.pushButton = QtWidgets.QPushButton(self.frame_2)
         self.pushButton.setGeometry(QtCore.QRect(330, 210, 107, 42))
         self.pushButton.setStyleSheet("#pushButton{\n"
-"padding: 8px 16px;\n"
-"height: 42px;\n"
-"background: #1877F2;\n"
-"box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);\n"
-"border-radius: 8px;\n"
-"color:white;\n"
-"font-size:14px;\n"
-"\n"
-"}\n"
-"\n"
-"#pushButton:hover{\n"
-"background: white;\n"
-"color: #1877F2;\n"
-"border:1px solid #1877f2;\n"
-"cursor:pointer;\n"
-"}\n"
-"")
+                                        "padding: 8px 16px;\n"
+                                        "height: 42px;\n"
+                                        "background: #1877F2;\n"
+                                        "box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);\n"
+                                        "border-radius: 8px;\n"
+                                        "color:white;\n"
+                                        "font-size:14px;\n"
+                                        "\n"
+                                        "}\n"
+                                        "\n"
+                                        "#pushButton:hover{\n"
+                                        "background: white;\n"
+                                        "color: #1877F2;\n"
+                                        "border:1px solid #1877f2;\n"
+                                        "cursor:pointer;\n"
+                                        "}\n"
+                                        "")
         self.pushButton.setObjectName("pushButton")
         self.label_7 = QtWidgets.QLabel(self.frame_2)
         self.label_7.setGeometry(QtCore.QRect(40, 90, 32, 19))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_7.setFont(font)
-        self.label_7.setStyleSheet("color:black;\n"
-"")
+        self.label_7.setStyleSheet("color:black;\n" "")
         self.label_7.setObjectName("label_7")
         self.label = QtWidgets.QLabel(self.frame_2)
         self.label.setGeometry(QtCore.QRect(0, 0, 461, 49))
@@ -105,25 +113,59 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
+        self.retranslateUi(MainWindow,self.data)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        
+        def clicked():
+            self.current_question = self.current_question+1
+            print(f"pakaya.....{self.current_question}")
+            self.retranslateUi(MainWindow,self.data)
+        self.pushButton.clicked.connect(clicked)
 
-    def retranslateUi(self, MainWindow):
+        
+
+        # .............................................................
+
+        # _translate = QtCore.QCoreApplication.translate
+        # MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        # self.label_4.setText(_translate("MainWindow", "Correct answer"))
+        # self.label.setText(_translate("MainWindow", "QuizMaster"))
+
+
+        
+        # self.pushButton.setText(_translate("MainWindow", "Next"))
+        # self.label_7.setText(_translate("MainWindow", "Q"+str(i)+"."))
+        
+        # self.label_8.setText(_translate("MainWindow", "The question goes here"))
+        # self.label_5.setText(_translate("MainWindow", "Correct answer"))
+
+
+# ..............................................................
+    def retranslateUi(self, MainWindow,data):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_4.setText(_translate("MainWindow", "Correct answer"))
-        self.pushButton.setText(_translate("MainWindow", "Next"))
-        self.label_7.setText(_translate("MainWindow", "Q1."))
         self.label.setText(_translate("MainWindow", "QuizMaster"))
-        self.label_8.setText(_translate("MainWindow", "The question goes here"))
-        self.label_5.setText(_translate("MainWindow", "Correct answer"))
 
+
+        if self.current_question < len(data):
+            self.pushButton.setText(_translate("MainWindow", "Next"))
+            self.label_7.setText(_translate("MainWindow", f"{data[self.current_question][2]}"))
+            
+            self.label_8.setText(_translate("MainWindow", f"{data[self.current_question][3]}"))
+            self.label_5.setText(_translate("MainWindow", f"{data[self.current_question][9]}"))
+        else:
+            self.pushButton.setText(_translate("MainWindow", ""))
 
 if __name__ == "__main__":
     import sys
+    newObj = QuessionAnswer()
+    
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_MainWindow(newObj.ViewData())
     ui.setupUi(MainWindow)
+    
+
     MainWindow.show()
     sys.exit(app.exec_())
