@@ -47,7 +47,9 @@ class Ui_MainWindow(object):
         font.setPointSize(14)
         self.label_2.setFont(font)
         self.label_2.setStyleSheet("color:white;")
-        self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.label_2.setAlignment(
+            QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop
+        )
         self.label_2.setWordWrap(True)
         self.label_2.setObjectName("label_2")
         self.horizontalLayout.addWidget(self.frame)
@@ -58,19 +60,23 @@ class Ui_MainWindow(object):
         self.frame_2.setObjectName("frame_2")
         self.lineEdit = QtWidgets.QLineEdit(self.frame_2)
         self.lineEdit.setGeometry(QtCore.QRect(40, 110, 251, 42))
-        self.lineEdit.setStyleSheet("color:black;\n"
-"padding:10px;\n"
-"background: #FFFFFF;\n"
-"border: 1px solid #D0D5DD;\n"
-"border-radius: 4px;")
+        self.lineEdit.setStyleSheet(
+            "color:black;\n"
+            "padding:10px;\n"
+            "background: #FFFFFF;\n"
+            "border: 1px solid #D0D5DD;\n"
+            "border-radius: 4px;"
+        )
         self.lineEdit.setObjectName("lineEdit")
         self.lineEdit_2 = QtWidgets.QLineEdit(self.frame_2)
         self.lineEdit_2.setGeometry(QtCore.QRect(40, 190, 251, 42))
-        self.lineEdit_2.setStyleSheet("color:black;\n"
-"padding:10px;\n"
-"background: #FFFFFF;\n"
-"border: 1px solid #D0D5DD;\n"
-"border-radius: 4px;")
+        self.lineEdit_2.setStyleSheet(
+            "color:black;\n"
+            "padding:10px;\n"
+            "background: #FFFFFF;\n"
+            "border: 1px solid #D0D5DD;\n"
+            "border-radius: 4px;"
+        )
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.label_6 = QtWidgets.QLabel(self.frame_2)
         self.label_6.setGeometry(QtCore.QRect(40, 170, 91, 16))
@@ -82,10 +88,12 @@ class Ui_MainWindow(object):
         self.label_5.setObjectName("label_5")
         self.sign_up_link = QtWidgets.QLabel(self.frame_2)
         self.sign_up_link.setGeometry(QtCore.QRect(40, 245, 71, 16))
-        self.sign_up_link.setStyleSheet("#sign_up_link{color:black}\n"
-"\n"
-"#sign_up_link:hover{color:rgb(20, 79, 255);}\n"
-"")
+        self.sign_up_link.setStyleSheet(
+            "#sign_up_link{color:black}\n"
+            "\n"
+            "#sign_up_link:hover{color:rgb(20, 79, 255);}\n"
+            ""
+        )
         self.sign_up_link.setObjectName("sign_up_link")
         self.title = QtWidgets.QLabel(self.frame_2)
         self.title.setGeometry(QtCore.QRect(40, 40, 71, 31))
@@ -96,22 +104,24 @@ class Ui_MainWindow(object):
         self.title.setObjectName("title")
         self.pushButton = QtWidgets.QPushButton(self.frame_2)
         self.pushButton.setGeometry(QtCore.QRect(40, 290, 251, 48))
-        self.pushButton.setStyleSheet("#pushButton{\n"
-"padding: 8px 16px;\n"
-"height: 42px;\n"
-"background: #1877F2;\n"
-"border-radius: 8px;\n"
-"color:white;\n"
-"font-size:14px;\n"
-"\n"
-"}\n"
-"\n"
-"#pushButton:hover{\n"
-"background: white;\n"
-"color: #1877F2;\n"
-"border:1px solid #1877f2;\n"
-"}\n"
-"")
+        self.pushButton.setStyleSheet(
+            "#pushButton{\n"
+            "padding: 8px 16px;\n"
+            "height: 42px;\n"
+            "background: #1877F2;\n"
+            "border-radius: 8px;\n"
+            "color:white;\n"
+            "font-size:14px;\n"
+            "\n"
+            "}\n"
+            "\n"
+            "#pushButton:hover{\n"
+            "background: white;\n"
+            "color: #1877F2;\n"
+            "border:1px solid #1877f2;\n"
+            "}\n"
+            ""
+        )
         self.pushButton.setObjectName("pushButton")
         self.label_7 = QtWidgets.QLabel(self.frame_2)
         self.label_7.setGeometry(QtCore.QRect(40, 245, 151, 16))
@@ -119,9 +129,11 @@ class Ui_MainWindow(object):
         self.label_7.setObjectName("label_7")
         self.sign_up_link_2 = QtWidgets.QLabel(self.frame_2)
         self.sign_up_link_2.setGeometry(QtCore.QRect(190, 245, 71, 16))
-        self.sign_up_link_2.setStyleSheet("#sign_up_link_2{color:black}\n"
-"#sign_up_link_2:hover{color:rgb(20, 79, 255);}\n"
-"")
+        self.sign_up_link_2.setStyleSheet(
+            "#sign_up_link_2{color:black}\n"
+            "#sign_up_link_2:hover{color:rgb(20, 79, 255);}\n"
+            ""
+        )
         self.sign_up_link_2.setObjectName("sign_up_link_2")
         self.lineEdit.raise_()
         self.lineEdit_2.raise_()
@@ -150,7 +162,11 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate("MainWindow", "QuizMaster"))
-        self.label_2.setText(_translate("MainWindow", "Think fast, score high. The ultimate Quiz App experience"))
+        self.label_2.setText(
+            _translate(
+                "MainWindow", "Think fast, score high. The ultimate Quiz App experience"
+            )
+        )
         self.lineEdit.setPlaceholderText(_translate("MainWindow", "Enter ID number"))
         self.lineEdit_2.setPlaceholderText(_translate("MainWindow", "Enter Password"))
         self.label_6.setText(_translate("MainWindow", "Password"))
@@ -160,5 +176,3 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "Sign in"))
         self.label_7.setText(_translate("MainWindow", "Don’t have an account?"))
         self.sign_up_link_2.setText(_translate("MainWindow", "Sign Up"))
-
-

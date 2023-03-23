@@ -40,32 +40,31 @@ class Ui_MainWindow(object):
         self.label_4.setObjectName("label_4")
         self.pushButton = QtWidgets.QPushButton(self.frame_2)
         self.pushButton.setGeometry(QtCore.QRect(510, 310, 107, 42))
-        self.pushButton.setStyleSheet("#pushButton{\n"
-"padding: 8px 16px;\n"
-"height: 42px;\n"
-"background: #1877F2;\n"
-"box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);\n"
-"border-radius: 8px;\n"
-"color:white;\n"
-"font-size:14px;\n"
-"\n"
-"}\n"
-"\n"
-"#pushButton:hover{\n"
-"background: white;\n"
-"color: #1877F2;\n"
-"border:1px solid #1877f2;\n"
-"cursor:pointer;\n"
-"}\n"
-"")
+        self.pushButton.setStyleSheet(
+            "#pushButton{\n"
+            "padding: 8px 16px;\n"
+            "height: 42px;\n"
+            "background: #1877F2;\n"
+            "border-radius: 8px;\n"
+            "color:white;\n"
+            "font-size:14px;\n"
+            "\n"
+            "}\n"
+            "\n"
+            "#pushButton:hover{\n"
+            "background: white;\n"
+            "color: #1877F2;\n"
+            "border:1px solid #1877f2;\n"
+            "}\n"
+            ""
+        )
         self.pushButton.setObjectName("pushButton")
         self.label_7 = QtWidgets.QLabel(self.frame_2)
         self.label_7.setGeometry(QtCore.QRect(40, 90, 32, 19))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_7.setFont(font)
-        self.label_7.setStyleSheet("color:black;\n"
-"")
+        self.label_7.setStyleSheet("color:black;\n" "")
         self.label_7.setObjectName("label_7")
         self.label = QtWidgets.QLabel(self.frame_2)
         self.label.setGeometry(QtCore.QRect(0, 0, 651, 45))
@@ -73,10 +72,9 @@ class Ui_MainWindow(object):
         font.setPointSize(16)
         self.label.setFont(font)
         self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.label.setStyleSheet("background-color:#1877F2;\n"
-"color:white;\n"
-"padding:15px;\n"
-"")
+        self.label.setStyleSheet(
+            "background-color:#1877F2;\n" "color:white;\n" "padding:15px;\n" ""
+        )
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.label_8 = QtWidgets.QLabel(self.frame_2)
@@ -84,8 +82,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_8.setFont(font)
-        self.label_8.setStyleSheet("color:black;\n"
-"")
+        self.label_8.setStyleSheet("color:black;\n" "")
         self.label_8.setObjectName("label_8")
         self.radioButton = QtWidgets.QRadioButton(self.frame_2)
         self.radioButton.setGeometry(QtCore.QRect(80, 130, 100, 20))
@@ -129,6 +126,7 @@ class Ui_MainWindow(object):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()

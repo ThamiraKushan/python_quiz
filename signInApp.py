@@ -1,14 +1,11 @@
-
 from PyQt5 import QtWidgets
 from sign_in_ui import Ui_MainWindow
 import sys
-import db_connect
 
 
 class sign_in(QtWidgets.QWidget, Ui_MainWindow):
-   
     def __init__(self):
-        super(sign_in,self).__init__()
+        super(sign_in, self).__init__()
         self.setupUi(self)
         self.button = QtWidgets.QPushButton("Click me")
         self.label = QtWidgets.QLabel()
@@ -23,7 +20,7 @@ class sign_in(QtWidgets.QWidget, Ui_MainWindow):
 
     def handle_click(self):
         self.label.setText("Button clicked")
-       
+
     def get_admin(self):
         cur, conn = db_connect.get_connection()
         print(cur, conn)
@@ -40,10 +37,12 @@ class sign_in(QtWidgets.QWidget, Ui_MainWindow):
     def inputs(self):
         u = self.lineEdit.text()
         ue = self.lineEdit_2.text()
-        print(u,ue)
+        print(u, ue)
+
 
 if __name__ == "__main__":
     import sys
+
     # app = QtWidgets.QApplication(sys.argv)
     # form = sign_in()
     # Ui_MainWindow().setupUi(form)
@@ -56,5 +55,3 @@ if __name__ == "__main__":
     ex.setupUi(w)
     w.show()
     sys.exit(app.exec_())
-
-
