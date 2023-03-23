@@ -62,7 +62,6 @@ class Ui_MainWindow(object):
 "padding:10px;\n"
 "background: #FFFFFF;\n"
 "border: 1px solid #D0D5DD;\n"
-"box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);\n"
 "border-radius: 4px;")
         self.lineEdit.setObjectName("lineEdit")
         self.lineEdit_2 = QtWidgets.QLineEdit(self.frame_2)
@@ -71,7 +70,6 @@ class Ui_MainWindow(object):
 "padding:10px;\n"
 "background: #FFFFFF;\n"
 "border: 1px solid #D0D5DD;\n"
-"box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);\n"
 "border-radius: 4px;")
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.label_6 = QtWidgets.QLabel(self.frame_2)
@@ -102,7 +100,6 @@ class Ui_MainWindow(object):
 "padding: 8px 16px;\n"
 "height: 42px;\n"
 "background: #1877F2;\n"
-"box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);\n"
 "border-radius: 8px;\n"
 "color:white;\n"
 "font-size:14px;\n"
@@ -113,7 +110,6 @@ class Ui_MainWindow(object):
 "background: white;\n"
 "color: #1877F2;\n"
 "border:1px solid #1877f2;\n"
-"cursor:pointer;\n"
 "}\n"
 "")
         self.pushButton.setObjectName("pushButton")
@@ -166,11 +162,3 @@ class Ui_MainWindow(object):
         self.sign_up_link_2.setText(_translate("MainWindow", "Sign Up"))
 
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
