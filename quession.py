@@ -77,3 +77,24 @@ class QuessionAnswer(object):
         db_connection.close()
 
         return results
+
+    def quiz(self):
+        # Define the SQL query
+        query = "select q.QsTable_id_n,q.PaperTable_Id,q.Q_No,q.Quession,ans.Answer_Id,ans.Answer_No,Answer,Is_Correct from queion q INNER JOIN answer ans on q.QsTable_id_n = ans.QsTable_id_n"
+        cursor = db_connection.cursor()
+        # Execute the query
+        cursor.execute(query)
+
+        # Fetch the results
+        results = cursor.fetchall()
+
+        # Process the results
+        # for row in results:
+        #     # Do something with each row of data
+        #     print(row)
+
+        # Close the cursor and connection
+        cursor.close()
+        db_connection.close()
+
+        return results

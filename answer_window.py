@@ -118,7 +118,7 @@ class Ui_MainWindow(object):
         
         def clicked():
             self.current_question = self.current_question+1
-            print(f"pakaya.....{self.current_question}")
+            print(f".....{self.current_question}")
             self.retranslateUi(MainWindow,self.data)
         self.pushButton.clicked.connect(clicked)
 
