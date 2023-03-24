@@ -9,9 +9,16 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from quession import QuessionAnswer
 
 
 class Ui_quiz(object):
+    
+    def __init__(self,data):
+        self.data = data
+        self.current_question=1
+        self.checkPoint=1
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(649, 429)
@@ -84,9 +91,9 @@ class Ui_quiz(object):
         self.label_8.setFont(font)
         self.label_8.setStyleSheet("color:black;\n" "")
         self.label_8.setObjectName("label_8")
-        self.radioButton = QtWidgets.QRadioButton(self.frame_2)
-        self.radioButton.setGeometry(QtCore.QRect(80, 130, 100, 20))
-        self.radioButton.setObjectName("radioButton")
+        self.radioButton_1 = QtWidgets.QRadioButton(self.frame_2)
+        self.radioButton_1.setGeometry(QtCore.QRect(80, 130, 100, 20))
+        self.radioButton_1.setObjectName("radioButton")
         self.radioButton_2 = QtWidgets.QRadioButton(self.frame_2)
         self.radioButton_2.setGeometry(QtCore.QRect(80, 160, 100, 20))
         self.radioButton_2.setObjectName("radioButton_2")
@@ -107,29 +114,58 @@ class Ui_quiz(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
+        self.retranslateUi(MainWindow,self.data)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def retranslateUi(self, MainWindow):
+# ........................
+        def clicked():
+            self.current_question = self.current_question+1
+            print(f"..quize...{self.current_question}")
+            self.retranslateUi(MainWindow,self.data)
+        self.pushButton.clicked.connect(clicked)
+        # .............
+
+    def retranslateUi(self, MainWindow,data):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_4.setText(_translate("MainWindow", "Choose the correct answer"))
         self.pushButton.setText(_translate("MainWindow", "Next"))
-        self.label_7.setText(_translate("MainWindow", "Q1."))
         self.label.setText(_translate("MainWindow", "QuizMaster"))
-        self.label_8.setText(_translate("MainWindow", "The question goes here"))
-        self.radioButton.setText(_translate("MainWindow", "RadioButton"))
-        self.radioButton_2.setText(_translate("MainWindow", "RadioButton"))
-        self.radioButton_3.setText(_translate("MainWindow", "RadioButton"))
-        self.radioButton_4.setText(_translate("MainWindow", "RadioButton"))
+        
+        print("before if 1 u")
+        Quizlist=[]
+        
+
+        for item in data:
+            if self.current_question == item[2]:
+                        Quizlist.append(item)
+
+        if len(Quizlist) >0:
+            self.label_7.setText(_translate("MainWindow", f"Q{Quizlist[0][2]}."))
+            self.label_8.setText(_translate("MainWindow", f"{Quizlist[0][3]}"))
+            self.radioButton_1.setText(_translate("MainWindow", f"{Quizlist[0][6]}"))
+            self.radioButton_2.setText(_translate("MainWindow", f"{Quizlist[1][6]}"))
+            self.radioButton_3.setText(_translate("MainWindow", f"{Quizlist[2][6]}"))
+            self.radioButton_4.setText(_translate("MainWindow", f"{Quizlist[3][6]}"))
+        else:
+            self.label_7.setText(_translate("MainWindow", f"1"))
+            self.label_8.setText(_translate("MainWindow", f"2"))
+            self.radioButton_1.setText(_translate("MainWindow", f"3"))
+            self.radioButton_2.setText(_translate("MainWindow", f"4"))
+            self.radioButton_3.setText(_translate("MainWindow", f"5"))
+            self.radioButton_4.setText(_translate("MainWindow", f"0"))
+            # change the butto name
+            self.pushButton.setText(_translate("MainWindow", "View"))
+        
+        
 
 
 if __name__ == "__main__":
     import sys
-
+    newObj = QuessionAnswer()
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_quiz()
+    ui = Ui_MainWindow(newObj.quiz())
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
