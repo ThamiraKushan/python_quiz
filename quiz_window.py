@@ -165,7 +165,7 @@ if __name__ == "__main__":
     newObj = QuessionAnswer()
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow(newObj.quiz())
+    ui = Ui_quiz(newObj.quiz())
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
