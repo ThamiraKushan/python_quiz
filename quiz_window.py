@@ -154,48 +154,9 @@ class Ui_MainWindow(object):
             self.radioButton_2.setText(_translate("MainWindow", f"4"))
             self.radioButton_3.setText(_translate("MainWindow", f"5"))
             self.radioButton_4.setText(_translate("MainWindow", f"0"))
-        # if self.current_question < len(data):
-        #     # self.label_7.setText(_translate("MainWindow", f"Q{data[self.current_question][2]}."))
-        #     # self.label_8.setText(_translate("MainWindow", f"{data[self.current_question][3]}"))
-            
-        #     print("after if 2 u")
-        #     radioVal=[]
-        #     Q_NO = ''
-            
-        #     for item in data:
-        #         if self.checkPoint >= self.current_question:
-        #             print(item)
-        #             print(self.current_question)
-        #             if self.current_question == item[2]:
-        #                 if Q_NO != item[2]:
-        #                     self.label_7.setText(_translate("MainWindow", f"Q{item[2]}."))
-        #                     self.label_8.setText(_translate("MainWindow", f"{item[3]}"))
-        #                     Q_NO = item[2]
-        #                 print("u are in")
-        #                 radioVal.append(item)
-        #                     # self.radioButton_1.setText(_translate("MainWindow", f"{item[6]}"))
-                
-        #                     # locals()["self.radioButton_" + str(item[5])].setText(_translate("MainWindow", f"{item[6]}"))
-        #         self.checkPoint=item[2]            
-        #     print(type(radioVal))
-        # #     print(radioVal[0][3])
-        # #     if self.current_question < len(data):
-        # if self.checkPoint >= self.current_question:
-        #     self.radioButton_1.setText(_translate("MainWindow", f"{radioVal[0][6]}"))
-        #     self.radioButton_2.setText(_translate("MainWindow", f"{radioVal[1][6]}"))
-        #     self.radioButton_3.setText(_translate("MainWindow", f"{radioVal[2][6]}"))
-        #     self.radioButton_4.setText(_translate("MainWindow", f"{radioVal[3][6]}"))            
-
-        #     self.pushButton.setText(_translate("MainWindow", "Next"))
-
-        # #     self.pushButton.setText(_translate("MainWindow", "Next"))
-        # #     self.label_7.setText(_translate("MainWindow", f"{data[self.current_question][2]}"))
-            
-        # #     self.label_8.setText(_translate("MainWindow", f"{data[self.current_question][3]}"))
-        # #     self.label_5.setText(_translate("MainWindow", f"{data[self.current_question][9]}"))
-        # else:
-        #     self.pushButton.setText(_translate("MainWindow", ""))
-        # # ..............
+            # change the butto name
+            self.pushButton.setText(_translate("MainWindow", "View result"))
+        
         
 
 
