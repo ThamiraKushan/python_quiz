@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from quession import QuessionAnswer
 
 
-class Ui_MainWindow(object):
+class Ui_AnswerWindow(object):
 
     current_question = 0
 
@@ -169,7 +169,7 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow(newObj.ViewData())
+    ui = Ui_AnswerWindow(newObj.ViewData())
     ui.setupUi(MainWindow)
 
     MainWindow.show()
