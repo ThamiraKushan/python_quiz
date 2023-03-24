@@ -40,24 +40,24 @@ class Ui_MainWindow(object):
         self.label_4.setObjectName("label_4")
         self.pushButton = QtWidgets.QPushButton(self.frame_2)
         self.pushButton.setGeometry(QtCore.QRect(160, 210, 107, 42))
-        self.pushButton.setStyleSheet("#pushButton{\n"
-"padding: 8px 16px;\n"
-"height: 42px;\n"
-"background: #1877F2;\n"
-"box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);\n"
-"border-radius: 8px;\n"
-"color:white;\n"
-"font-size:14px;\n"
-"\n"
-"}\n"
-"\n"
-"#pushButton:hover{\n"
-"background: white;\n"
-"color: #1877F2;\n"
-"border:1px solid #1877f2;\n"
-"cursor:pointer;\n"
-"}\n"
-"")
+        self.pushButton.setStyleSheet(
+            "#pushButton{\n"
+            "padding: 8px 16px;\n"
+            "height: 42px;\n"
+            "background: #1877F2;\n"
+            "border-radius: 8px;\n"
+            "color:white;\n"
+            "font-size:14px;\n"
+            "\n"
+            "}\n"
+            "\n"
+            "#pushButton:hover{\n"
+            "background: white;\n"
+            "color: #1877F2;\n"
+            "border:1px solid #1877f2;\n"
+            "}\n"
+            ""
+        )
         self.pushButton.setObjectName("pushButton")
         self.label = QtWidgets.QLabel(self.frame_2)
         self.label.setGeometry(QtCore.QRect(0, 0, 311, 49))
@@ -65,10 +65,9 @@ class Ui_MainWindow(object):
         font.setPointSize(16)
         self.label.setFont(font)
         self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.label.setStyleSheet("background-color:#1877F2;\n"
-"color:white;\n"
-"padding:15px;\n"
-"")
+        self.label.setStyleSheet(
+            "background-color:#1877F2;\n" "color:white;\n" "padding:15px;\n" ""
+        )
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.label_8 = QtWidgets.QLabel(self.frame_2)
@@ -76,70 +75,64 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_8.setFont(font)
-        self.label_8.setStyleSheet("color:black;\n"
-"")
+        self.label_8.setStyleSheet("color:black;\n" "")
         self.label_8.setObjectName("label_8")
         self.label_9 = QtWidgets.QLabel(self.frame_2)
         self.label_9.setGeometry(QtCore.QRect(140, 100, 88, 19))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_9.setFont(font)
-        self.label_9.setStyleSheet("color:black;\n"
-"")
+        self.label_9.setStyleSheet("color:black;\n" "")
         self.label_9.setObjectName("label_9")
         self.label_10 = QtWidgets.QLabel(self.frame_2)
         self.label_10.setGeometry(QtCore.QRect(190, 130, 88, 19))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_10.setFont(font)
-        self.label_10.setStyleSheet("color:black;\n"
-"")
+        self.label_10.setStyleSheet("color:black;\n" "")
         self.label_10.setObjectName("label_10")
         self.label_11 = QtWidgets.QLabel(self.frame_2)
         self.label_11.setGeometry(QtCore.QRect(40, 130, 128, 19))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_11.setFont(font)
-        self.label_11.setStyleSheet("color:black;\n"
-"")
+        self.label_11.setStyleSheet("color:black;\n" "")
         self.label_11.setObjectName("label_11")
         self.label_12 = QtWidgets.QLabel(self.frame_2)
         self.label_12.setGeometry(QtCore.QRect(180, 160, 88, 19))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_12.setFont(font)
-        self.label_12.setStyleSheet("color:black;\n"
-"")
+        self.label_12.setStyleSheet("color:black;\n" "")
         self.label_12.setObjectName("label_12")
         self.label_13 = QtWidgets.QLabel(self.frame_2)
         self.label_13.setGeometry(QtCore.QRect(40, 160, 126, 19))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_13.setFont(font)
-        self.label_13.setStyleSheet("color:black;\n"
-"")
+        self.label_13.setStyleSheet("color:black;\n" "")
         self.label_13.setObjectName("label_13")
         self.pushButton_secondary = QtWidgets.QPushButton(self.frame_2)
         self.pushButton_secondary.setGeometry(QtCore.QRect(30, 210, 107, 42))
-        self.pushButton_secondary.setStyleSheet("#pushButton_secondary{\n"
-"padding: 8px 16px;\n"
-"height: 42px;\n"
-"border:1px solid #1877f2;\n"
-"background: white;\n"
-"box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);\n"
-"border-radius: 8px;\n"
-"color:#1877f2;\n"
-"font-size:14px;\n"
-"\n"
-"}\n"
-"\n"
-"#pushButton_secondary:hover{\n"
-"color: white;\n"
-" background: #1877F2;\n"
-"border:1px solid #1877f2;\n"
-"cursor:pointer;\n"
-"}\n"
-"")
+        self.pushButton_secondary.setStyleSheet(
+            "#pushButton_secondary{\n"
+            "padding: 8px 16px;\n"
+            "height: 42px;\n"
+            "border:1px solid #1877f2;\n"
+            "background: white;\n"
+            "border-radius: 8px;\n"
+            "color:#1877f2;\n"
+            "font-size:14px;\n"
+            "\n"
+            "}\n"
+            "\n"
+            "#pushButton_secondary:hover{\n"
+            "color: white;\n"
+            " background: #1877F2;\n"
+            "border:1px solid #1877f2;\n"
+            "}\n"
+            ""
+        )
         self.pushButton_secondary.setObjectName("pushButton_secondary")
         self.horizontalLayout.addWidget(self.frame_2)
         self.gridLayout.addWidget(self.widget, 0, 0, 1, 1)
@@ -172,6 +165,7 @@ class Ui_MainWindow(object):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()

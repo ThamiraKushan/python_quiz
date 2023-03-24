@@ -47,7 +47,9 @@ class Ui_MainWindow(object):
         font.setPointSize(14)
         self.label_2.setFont(font)
         self.label_2.setStyleSheet("color:white;")
-        self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.label_2.setAlignment(
+            QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop
+        )
         self.label_2.setWordWrap(True)
         self.label_2.setObjectName("label_2")
         self.horizontalLayout.addWidget(self.frame)
@@ -58,24 +60,24 @@ class Ui_MainWindow(object):
         self.frame_2.setObjectName("frame_2")
         self.pushButton = QtWidgets.QPushButton(self.frame_2)
         self.pushButton.setGeometry(QtCore.QRect(40, 390, 251, 48))
-        self.pushButton.setStyleSheet("#pushButton{\n"
-"padding: 8px 16px;\n"
-"height: 42px;\n"
-"background: #1877F2;\n"
-"box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);\n"
-"border-radius: 8px;\n"
-"color:white;\n"
-"font-size:14px;\n"
-"\n"
-"}\n"
-"\n"
-"#pushButton:hover{\n"
-"background: white;\n"
-"color: #1877F2;\n"
-"border:1px solid #1877f2;\n"
-"cursor:pointer;\n"
-"}\n"
-"")
+        self.pushButton.setStyleSheet(
+            "#pushButton{\n"
+            "padding: 8px 16px;\n"
+            "height: 42px;\n"
+            "background: #1877F2;\n"
+            "border-radius: 8px;\n"
+            "color:white;\n"
+            "font-size:14px;\n"
+            "\n"
+            "}\n"
+            "\n"
+            "#pushButton:hover{\n"
+            "background: white;\n"
+            "color: #1877F2;\n"
+            "border:1px solid #1877f2;\n"
+            "}\n"
+            ""
+        )
         self.pushButton.setObjectName("pushButton")
         self.label_6 = QtWidgets.QLabel(self.frame_2)
         self.label_6.setGeometry(QtCore.QRect(40, 170, 91, 16))
@@ -83,21 +85,23 @@ class Ui_MainWindow(object):
         self.label_6.setObjectName("label_6")
         self.lineEdit = QtWidgets.QLineEdit(self.frame_2)
         self.lineEdit.setGeometry(QtCore.QRect(40, 120, 251, 42))
-        self.lineEdit.setStyleSheet("color:black;\n"
-"padding:10px;\n"
-"background: #FFFFFF;\n"
-"border: 1px solid #D0D5DD;\n"
-"box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);\n"
-"border-radius: 4px;")
+        self.lineEdit.setStyleSheet(
+            "color:black;\n"
+            "padding:10px;\n"
+            "background: #FFFFFF;\n"
+            "border: 1px solid #D0D5DD;\n"
+            "border-radius: 4px;"
+        )
         self.lineEdit.setObjectName("lineEdit")
         self.lineEdit_2 = QtWidgets.QLineEdit(self.frame_2)
         self.lineEdit_2.setGeometry(QtCore.QRect(40, 190, 251, 40))
-        self.lineEdit_2.setStyleSheet("color:black;\n"
-"padding:10px;\n"
-"background: #FFFFFF;\n"
-"border: 1px solid #D0D5DD;\n"
-"box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);\n"
-"border-radius: 4px;")
+        self.lineEdit_2.setStyleSheet(
+            "color:black;\n"
+            "padding:10px;\n"
+            "background: #FFFFFF;\n"
+            "border: 1px solid #D0D5DD;\n"
+            "border-radius: 4px;"
+        )
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.label_5 = QtWidgets.QLabel(self.frame_2)
         self.label_5.setGeometry(QtCore.QRect(40, 100, 91, 16))
@@ -116,12 +120,13 @@ class Ui_MainWindow(object):
         self.label_7.setObjectName("label_7")
         self.lineEdit_3 = QtWidgets.QLineEdit(self.frame_2)
         self.lineEdit_3.setGeometry(QtCore.QRect(40, 260, 251, 40))
-        self.lineEdit_3.setStyleSheet("color:black;\n"
-"padding:10px;\n"
-"background: #FFFFFF;\n"
-"border: 1px solid #D0D5DD;\n"
-"box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);\n"
-"border-radius: 4px;")
+        self.lineEdit_3.setStyleSheet(
+            "color:black;\n"
+            "padding:10px;\n"
+            "background: #FFFFFF;\n"
+            "border: 1px solid #D0D5DD;\n"
+            "border-radius: 4px;"
+        )
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.label_8 = QtWidgets.QLabel(self.frame_2)
         self.label_8.setGeometry(QtCore.QRect(40, 310, 121, 16))
@@ -129,12 +134,13 @@ class Ui_MainWindow(object):
         self.label_8.setObjectName("label_8")
         self.lineEdit_4 = QtWidgets.QLineEdit(self.frame_2)
         self.lineEdit_4.setGeometry(QtCore.QRect(40, 330, 251, 40))
-        self.lineEdit_4.setStyleSheet("color:black;\n"
-"padding:10px;\n"
-"background: #FFFFFF;\n"
-"border: 1px solid #D0D5DD;\n"
-"box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);\n"
-"border-radius: 4px;")
+        self.lineEdit_4.setStyleSheet(
+            "color:black;\n"
+            "padding:10px;\n"
+            "background: #FFFFFF;\n"
+            "border: 1px solid #D0D5DD;\n"
+            "border-radius: 4px;"
+        )
         self.lineEdit_4.setObjectName("lineEdit_4")
         self.horizontalLayout.addWidget(self.frame_2)
         self.gridLayout.addWidget(self.widget, 0, 0, 1, 1)
@@ -154,21 +160,32 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate("MainWindow", "QuizMaster"))
-        self.label_2.setText(_translate("MainWindow", "Think fast, score high. The ultimate Quiz App experience"))
+        self.label_2.setText(
+            _translate(
+                "MainWindow", "Think fast, score high. The ultimate Quiz App experience"
+            )
+        )
         self.pushButton.setText(_translate("MainWindow", "Sign up"))
         self.label_6.setText(_translate("MainWindow", "Email"))
         self.lineEdit.setPlaceholderText(_translate("MainWindow", "Enter your name"))
-        self.lineEdit_2.setPlaceholderText(_translate("MainWindow", "Enter your email address"))
+        self.lineEdit_2.setPlaceholderText(
+            _translate("MainWindow", "Enter your email address")
+        )
         self.label_5.setText(_translate("MainWindow", "Name"))
         self.label_4.setText(_translate("MainWindow", "Sign up to get started"))
         self.label_7.setText(_translate("MainWindow", "Password"))
-        self.lineEdit_3.setPlaceholderText(_translate("MainWindow", "Enter your password"))
+        self.lineEdit_3.setPlaceholderText(
+            _translate("MainWindow", "Enter your password")
+        )
         self.label_8.setText(_translate("MainWindow", "Confirm password "))
-        self.lineEdit_4.setPlaceholderText(_translate("MainWindow", "Re-enter password"))
+        self.lineEdit_4.setPlaceholderText(
+            _translate("MainWindow", "Re-enter password")
+        )
 
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
