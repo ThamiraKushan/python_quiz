@@ -11,12 +11,12 @@
 import hashlib
 from PyQt5 import QtCore, QtGui, QtWidgets
 from connection import db_connection
-from loginUi import Ui_form
+from quiz_window import Ui_quiz
 
 cursor = db_connection.cursor(dictionary=True)
 
 
-class Ui_MainWindow(object):
+class signup_form(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(657, 522)
@@ -158,6 +158,14 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+        self.label.setWordWrap(True)
+        self.label_2.setWordWrap(True)
+        self.label_4.setWordWrap(True)
+        self.label_5.setWordWrap(True)
+        self.label_6.setWordWrap(True)
+        self.label_7.setWordWrap(True)
+        self.label_8.setWordWrap(True)
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -191,13 +199,12 @@ class Ui_MainWindow(object):
 
         self.pushButton.clicked.connect(self.reg_user)
 
-    def openFileUpload(self):
+    def openQuiz(self):
         self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_form()
+        self.ui = Ui_quiz()
         self.ui.setupUi(self.window)
         MainWindow.hide()
         self.window.show()
-
 
     def reg_user(self):
         id = ""
@@ -213,7 +220,7 @@ class Ui_MainWindow(object):
         hash_password_con = hash_obj_con.hexdigest()
         user_role = ''
         status = ''
-        
+
         # print('user_id', user_id)
         # print('email', email)
         # print('hash_password', hash_password)
@@ -229,10 +236,11 @@ class Ui_MainWindow(object):
                 user_exists = False
                 print(user_exists)
                 sql = "INSERT INTO user (id, user_id, password, email, status, user_role) VALUES (%s,%s,%s,%s,%s,%s)"
-                values = (None, user_id, hash_password, email, status, user_role)
+                values = (None, user_id, hash_password,
+                          email, status, user_role)
                 cursor.execute(sql, values)
                 db_connection.commit()
-                self.openFileUpload()
+                self.openQuiz()
             else:
                 user_exists = True
                 print(user_exists)
@@ -240,14 +248,13 @@ class Ui_MainWindow(object):
         else:
             print("password error")
 
-   
 
 if __name__ == "__main__":
     import sys
 
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = signup_form()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

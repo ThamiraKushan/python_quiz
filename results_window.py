@@ -19,7 +19,7 @@ class Ui_Result(object):
        
         self.User_Id = User_Id
         self.ObjQuiz = QuessionAnswer()
-        self.CorectAnswer =  self.ObjQuiz.ViewCorrectAnswer()
+        self.CorectAnswer = self.ObjQuiz.ViewCorrectAnswer()
 
         
 
@@ -156,16 +156,22 @@ class Ui_Result(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
-        # for label in self.labels:
-        #     label.setMinimumSize(label.sizeHint())
+        self.label.setMinimumSize(self.label.sizeHint())
+        self.label_4.setMinimumSize(self.label_4.sizeHint())
+        self.label_8.setMinimumSize(self.label_8.sizeHint())
+        self.label_9.setMinimumSize(self.label_9.sizeHint())
+        self.label.setWordWrap(True)
+        self.label_4.setWordWrap(True)
+        self.label_8.setWordWrap(True)
+        self.label_9.setWordWrap(True)
 
-        # self.CheckAnswer()
+        self.CheckAnswer()
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        
+
     # open new window
     def Open_AnswerWindow(self):
-        
+
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_AnswerWindow()
         self.ui.setupUi(self.window)
@@ -185,7 +191,7 @@ class Ui_Result(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_4.setText(_translate("MainWindow", "Results"))
-        
+
         self.label.setText(_translate("MainWindow", "QuizMaster"))
         self.label_8.setText(_translate("MainWindow", "Your score :"))
         self.label_9.setText(_translate("MainWindow", f"{MyMarks} %"))
@@ -199,8 +205,6 @@ class Ui_Result(object):
         self.pushButton.setText(_translate("MainWindow", "Answers"))
         self.pushButton.clicked.connect(self.Open_AnswerWindow)
 
-
-    
 
 if __name__ == "__main__":
     import sys

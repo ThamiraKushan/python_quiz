@@ -19,12 +19,11 @@ class Ui_AnswerWindow(object):
     def __init__(self):
         self.ObjQuiz = QuessionAnswer()
         self.data = self.ObjQuiz.ViewCorrectAnswer()
-        
 
     def setupUi(self, MainWindow):
 
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1460, 1319)
+        MainWindow.resize(460, 319)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -111,14 +110,24 @@ class Ui_AnswerWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
+        self.label.setMinimumSize(self.label.sizeHint())
+        self.label_4.setMinimumSize(self.label_4.sizeHint())
+        self.label_5.setMinimumSize(self.label_5.sizeHint())
+        self.label_7.setMinimumSize(self.label_7.sizeHint())
+        self.label_8.setMinimumSize(self.label_8.sizeHint())
+        self.label.setWordWrap(True)
+        self.label_4.setWordWrap(True)
+        self.label_5.setWordWrap(True)
+        self.label_7.setWordWrap(True)
+        self.label_8.setWordWrap(True)
 
         self.retranslateUi(MainWindow, self.data)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        
+
         def clicked():
             self.current_question = self.current_question+1
             print(f".....{self.current_question}")
-            self.retranslateUi(MainWindow,self.data)
+            self.retranslateUi(MainWindow, self.data)
         self.pushButton.clicked.connect(clicked)
 
         def clicked():
@@ -166,7 +175,6 @@ class Ui_AnswerWindow(object):
 
 if __name__ == "__main__":
     import sys
-
 
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
