@@ -165,7 +165,7 @@ class Ui_Result(object):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_AnswerWindow()
         self.ui.setupUi(self.window)
-        MainWindow.hide()
+        # MainWindow.hide()
         self.window.show()
 
     def CheckAnswer(self):

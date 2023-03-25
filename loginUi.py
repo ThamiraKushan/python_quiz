@@ -216,7 +216,7 @@ class Ui_form(object):
         cursor.execute(sql, (user_id, hash_password))
         result = cursor.fetchone()
         print(result)
-        print(result["user_role"])
+        # print(result["user_role"])
 
         if result != []:
             if result["user_role"] == "admin":

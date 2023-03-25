@@ -135,12 +135,24 @@ class Ui_quiz(object):
 
     # open new window
     def Open_ResultWindow(self):
-        print(self.GivenAnswers)
-        self.window = QtWidgets.QMainWindow()
+
+        
+        self.MainWindow_R = QtWidgets.QMainWindow()
         self.ui = Ui_Result(self.GivenAnswers)
-        self.ui.setupUi(self.window)
-        MainWindow.hide()
-        self.window.show()
+        self.ui.setupUi(self.MainWindow_R)
+        # MainWindow.hide()
+        
+        # sys.exit(app.exec_())
+        self.MainWindow_R.show()
+        
+      
+        # .............
+        print(self.GivenAnswers)
+        # self.window = QtWidgets.QMainWindow()
+        # self.ui = Ui_Result(self.GivenAnswers)
+        # self.ui.setupUi(self.window)
+        # MainWindow.hide()
+        # self.window.show()
         
     def retranslateUi(self, MainWindow,data):
         _translate = QtCore.QCoreApplication.translate
