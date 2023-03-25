@@ -16,13 +16,6 @@ from PyQt5.uic import loadUi
 
 class Ui_MainWindow(object):
     
-    def browsefiles(self):
-        directory = '.' # set the initial directory to the current working directory
-        fileName = QFileDialog.getSaveFileName(None, 'Dialog Title', directory)
-        if fileName:
-            self.lineEdit.setText(fileName)
-
-
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(668, 429)
@@ -69,7 +62,8 @@ class Ui_MainWindow(object):
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setObjectName("frame_2")
-        self.lineEdit = QtWidgets.QLineEdit(self.frame_2)
+        # self.lineEdit = QtWidgets.QLineEdit(self.frame_2)
+        self.lineEdit =  QtWidgets.QLabel(self.frame_2)
         self.lineEdit.setGeometry(QtCore.QRect(40, 110, 251, 42))
         self.lineEdit.setStyleSheet(
             "color:black;\n"
@@ -79,7 +73,7 @@ class Ui_MainWindow(object):
             
             "border-radius: 4px;"
         )
-        self.lineEdit.setPlaceholderText("")
+        # self.lineEdit.setPlaceholderText("")
         self.lineEdit.setObjectName("lineEdit")
         self.title = QtWidgets.QLabel(self.frame_2)
         self.title.setEnabled(True)
@@ -167,9 +161,11 @@ class Ui_MainWindow(object):
 
  
 
-
-
-
+    def browsefiles(self):
+        fname = QFileDialog.getOpenFileName(self,"Open File", '','All Files(*);;CSV(*.csv)')
+        if fname:
+            self.lineEdit.setText(fname[0])
+ 
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
