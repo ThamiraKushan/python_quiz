@@ -23,7 +23,7 @@ class Ui_AnswerWindow(object):
     def setupUi(self, MainWindow):
 
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1460, 1319)
+        MainWindow.resize(460, 319)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -115,6 +115,11 @@ class Ui_AnswerWindow(object):
         self.label_5.setMinimumSize(self.label_5.sizeHint())
         self.label_7.setMinimumSize(self.label_7.sizeHint())
         self.label_8.setMinimumSize(self.label_8.sizeHint())
+        self.label.setWordWrap(True)
+        self.label_4.setWordWrap(True)
+        self.label_5.setWordWrap(True)
+        self.label_7.setWordWrap(True)
+        self.label_8.setWordWrap(True)
 
         self.retranslateUi(MainWindow, self.data)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)

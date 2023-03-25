@@ -159,6 +159,10 @@ class Ui_Result(object):
         self.label_4.setMinimumSize(self.label_4.sizeHint())
         self.label_8.setMinimumSize(self.label_8.sizeHint())
         self.label_9.setMinimumSize(self.label_9.sizeHint())
+        self.label.setWordWrap(True)
+        self.label_4.setWordWrap(True)
+        self.label_8.setWordWrap(True)
+        self.label_9.setWordWrap(True)
 
         self.CheckAnswer()
         self.retranslateUi(MainWindow)

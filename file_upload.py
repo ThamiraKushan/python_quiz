@@ -144,6 +144,8 @@ class File_upload_Window(object):
 
         self.label.setMinimumSize(self.label.sizeHint())
         self.label_2.setMinimumSize(self.label_2.sizeHint())
+        self.label.setWordWrap(True)
+        self.label_2.setWordWrap(True)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)

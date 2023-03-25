@@ -200,6 +200,11 @@ class Ui_form(object):
         self.label_5.setMinimumSize(self.label_5.sizeHint())
         self.label_6.setMinimumSize(self.label_6.sizeHint())
         self.label_7.setMinimumSize(self.label_7.sizeHint())
+        self.label.setWordWrap(True)
+        self.label_2.setWordWrap(True)
+        self.label_5.setWordWrap(True)
+        self.label_6.setWordWrap(True)
+        self.label_7.setWordWrap(True)
 
         # button clicked
         self.pushButton.clicked.connect(self.checkUser)
