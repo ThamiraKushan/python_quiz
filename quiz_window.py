@@ -142,8 +142,8 @@ class Ui_quiz(object):
         self.ui.setupUi(self.window)
         MainWindow.hide()
         self.window.show()
-        
-    def retranslateUi(self, MainWindow,data):
+
+    def retranslateUi(self, MainWindow, data):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_4.setText(_translate(
