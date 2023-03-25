@@ -192,7 +192,7 @@ class Ui_Result(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_4.setText(_translate("MainWindow", "Results"))
 
-        self.label.setText(_translate("MainWindow", "QuizMaster"))
+        self.label.setText(_translate("MainWindow", "QuizMaster - MIT "))
         self.label_8.setText(_translate("MainWindow", "Your score :"))
         self.label_9.setText(_translate("MainWindow", f"{MyMarks} %"))
      

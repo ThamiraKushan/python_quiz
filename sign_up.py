@@ -19,7 +19,7 @@ cursor = db_connection.cursor(dictionary=True)
 class signup_form(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(657, 522)
+        MainWindow.resize(850, 522)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -40,7 +40,7 @@ class signup_form(object):
         self.label = QtWidgets.QLabel(self.frame)
         self.label.setGeometry(QtCore.QRect(40, 90, 130, 29))
         font = QtGui.QFont()
-        font.setPointSize(24)
+        font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
         self.label.setFont(font)
@@ -115,7 +115,7 @@ class signup_form(object):
         self.label_4 = QtWidgets.QLabel(self.frame_2)
         self.label_4.setGeometry(QtCore.QRect(40, 50, 191, 31))
         font = QtGui.QFont()
-        font.setPointSize(20)
+        font.setPointSize(18)
         self.label_4.setFont(font)
         self.label_4.setStyleSheet("color:black;")
         self.label_4.setObjectName("label_4")
@@ -157,22 +157,13 @@ class signup_form(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
-
-        self.label.setWordWrap(True)
-        self.label_2.setWordWrap(True)
-        self.label_4.setWordWrap(True)
-        self.label_5.setWordWrap(True)
-        self.label_6.setWordWrap(True)
-        self.label_7.setWordWrap(True)
-        self.label_8.setWordWrap(True)
-
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "QuizMaster"))
+        self.label.setText(_translate("MainWindow", "QuizMaster - MIT "))
         self.label_2.setText(
             _translate(
                 "MainWindow", "Think fast, score high. The ultimate Quiz App experience"
@@ -196,6 +187,22 @@ class signup_form(object):
         self.lineEdit_4.setPlaceholderText(
             _translate("MainWindow", "Re-enter password")
         )
+
+        self.label.setMinimumSize(self.label.sizeHint())
+        self.label_2.setMinimumSize(self.label_2.sizeHint())
+        self.label_4.setMinimumSize(self.label_4.sizeHint())
+        self.label_5.setMinimumSize(self.label_5.sizeHint())
+        self.label_6.setMinimumSize(self.label_6.sizeHint())
+        self.label_7.setMinimumSize(self.label_7.sizeHint())
+        self.label_8.setMinimumSize(self.label_8.sizeHint())
+        self.label.setWordWrap(True)
+        self.label_2.setWordWrap(True)
+        self.label_4.setWordWrap(True)
+        self.label_5.setWordWrap(True)
+        self.label_6.setWordWrap(True)
+        self.label_7.setWordWrap(True)
+        self.label_8.setWordWrap(True)
+
 
         self.pushButton.clicked.connect(self.reg_user)
 

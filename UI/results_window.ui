@@ -134,7 +134,7 @@ padding:15px;
 </string>
           </property>
           <property name="text">
-           <string>QuizMaster</string>
+           <string>QuizMaster - MIT </string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>

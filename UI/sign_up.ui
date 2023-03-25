@@ -79,7 +79,7 @@
            <string notr="true">color:white;</string>
           </property>
           <property name="text">
-           <string>QuizMaster</string>
+           <string>QuizMaster - MIT </string>
           </property>
          </widget>
          <widget class="QLabel" name="label_2">

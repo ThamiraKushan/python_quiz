@@ -23,7 +23,7 @@ class Ui_AnswerWindow(object):
     def setupUi(self, MainWindow):
 
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(460, 319)
+        MainWindow.resize(649, 429)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -48,7 +48,7 @@ class Ui_AnswerWindow(object):
         self.label_4.setStyleSheet("color:rgb(68, 79, 116)")
         self.label_4.setObjectName("label_4")
         self.pushButton = QtWidgets.QPushButton(self.frame_2)
-        self.pushButton.setGeometry(QtCore.QRect(330, 210, 107, 42))
+        self.pushButton.setGeometry(QtCore.QRect(500, 310, 107, 42))
         self.pushButton.setStyleSheet(
             "#pushButton{\n"
             "padding: 8px 16px;\n"
@@ -76,7 +76,7 @@ class Ui_AnswerWindow(object):
         self.label_7.setStyleSheet("color:black;\n" "")
         self.label_7.setObjectName("label_7")
         self.label = QtWidgets.QLabel(self.frame_2)
-        self.label.setGeometry(QtCore.QRect(0, 0, 461, 49))
+        self.label.setGeometry(QtCore.QRect(0, 0, 649, 49))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label.setFont(font)
@@ -87,14 +87,14 @@ class Ui_AnswerWindow(object):
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.label_8 = QtWidgets.QLabel(self.frame_2)
-        self.label_8.setGeometry(QtCore.QRect(80, 90, 171, 19))
+        self.label_8.setGeometry(QtCore.QRect(80, 90, 500, 19))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_8.setFont(font)
         self.label_8.setStyleSheet("color:black;\n" "")
         self.label_8.setObjectName("label_8")
         self.label_5 = QtWidgets.QLabel(self.frame_2)
-        self.label_5.setGeometry(QtCore.QRect(80, 120, 99, 17))
+        self.label_5.setGeometry(QtCore.QRect(80, 130, 400, 17))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.label_5.setFont(font)
@@ -119,7 +119,8 @@ class Ui_AnswerWindow(object):
         self.label_4.setWordWrap(True)
         self.label_5.setWordWrap(True)
         self.label_7.setWordWrap(True)
-        self.label_8.setWordWrap(True)
+        self.label_8.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        
 
         self.retranslateUi(MainWindow, self.data)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -142,7 +143,7 @@ class Ui_AnswerWindow(object):
         # _translate = QtCore.QCoreApplication.translate
         # MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         # self.label_4.setText(_translate("MainWindow", "Correct answer"))
-        # self.label.setText(_translate("MainWindow", "QuizMaster"))
+        # self.label.setText(_translate("MainWindow", "QuizMaster - MIT "))
 
         # self.pushButton.setText(_translate("MainWindow", "Next"))
         # self.label_7.setText(_translate("MainWindow", "Q"+str(i)+"."))
@@ -154,8 +155,8 @@ class Ui_AnswerWindow(object):
     def retranslateUi(self, MainWindow, data):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_4.setText(_translate("MainWindow", "Correct answer"))
-        self.label.setText(_translate("MainWindow", "QuizMaster"))
+        # self.label_4.setText(_translate("MainWindow", "Correct answer"))
+        self.label.setText(_translate("MainWindow", "QuizMaster - MIT "))
 
         if self.current_question < len(data):
             self.pushButton.setText(_translate("MainWindow", "Next"))

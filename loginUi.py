@@ -20,7 +20,7 @@ from sign_up import signup_form
 class Ui_form(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(668, 429)
+        MainWindow.resize(850, 522)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -41,7 +41,7 @@ class Ui_form(object):
         self.label = QtWidgets.QLabel(self.frame)
         self.label.setGeometry(QtCore.QRect(40, 90, 130, 29))
         font = QtGui.QFont()
-        font.setPointSize(24)
+        font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
         self.label.setFont(font)
@@ -88,13 +88,13 @@ class Ui_form(object):
         )
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.label_6 = QtWidgets.QLabel(self.frame_2)
-        self.label_6.setGeometry(QtCore.QRect(40, 162, 91, 16))
+        self.label_6.setGeometry(QtCore.QRect(40, 152, 91, 14))
         self.label_6.setStyleSheet("color: #344054;")
         self.label_6.setObjectName("label_6")
         self.label_6.setMinimumSize(self.label.sizeHint())
         # self.label_6.setAlignment(QtCore.Qt.AlignCenter)
         self.label_5 = QtWidgets.QLabel(self.frame_2)
-        self.label_5.setGeometry(QtCore.QRect(40, 82, 91, 16))
+        self.label_5.setGeometry(QtCore.QRect(40, 72, 91, 14))
         self.label_5.setStyleSheet("color: #344054;")
         self.label_5.setObjectName("label_5")
         self.label_5.setMinimumSize(self.label.sizeHint())
@@ -111,7 +111,7 @@ class Ui_form(object):
         self.title = QtWidgets.QLabel(self.frame_2)
         self.title.setGeometry(QtCore.QRect(40, 40, 71, 31))
         font = QtGui.QFont()
-        font.setPointSize(20)
+        font.setPointSize(18)
         self.title.setFont(font)
         self.title.setStyleSheet("color:black;")
         self.title.setObjectName("title")
@@ -143,7 +143,7 @@ class Ui_form(object):
         self.label_7.setMinimumSize(self.label.sizeHint())
         # self.label_7.setAlignment(QtCore.Qt.AlignCenter)
         self.sign_up_link_2 = QtWidgets.QLabel(self.frame_2)
-        self.sign_up_link_2.setGeometry(QtCore.QRect(190, 245, 71, 16))
+        self.sign_up_link_2.setGeometry(QtCore.QRect(190, 255, 71, 16))
         self.sign_up_link_2.setStyleSheet(
             "#sign_up_link_2{color:black}\n"
             "#sign_up_link_2:hover{color:rgb(20, 79, 255);}\n"
@@ -176,7 +176,7 @@ class Ui_form(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "QuizMaster"))
+        self.label.setText(_translate("MainWindow", "QuizMaster - MIT "))
         self.label_2.setText(
             _translate(
                 "MainWindow", "Think fast, score high. The ultimate Quiz App experience"
@@ -200,11 +200,17 @@ class Ui_form(object):
         self.label_5.setMinimumSize(self.label_5.sizeHint())
         self.label_6.setMinimumSize(self.label_6.sizeHint())
         self.label_7.setMinimumSize(self.label_7.sizeHint())
+        self.sign_up_link.setMinimumSize(self.sign_up_link.sizeHint())
+        self.sign_up_link_2.setMinimumSize(self.sign_up_link_2.sizeHint())
+        self.title.setMinimumSize(self.title.sizeHint())
         self.label.setWordWrap(True)
         self.label_2.setWordWrap(True)
         self.label_5.setWordWrap(True)
         self.label_6.setWordWrap(True)
         self.label_7.setWordWrap(True)
+        self.sign_up_link.setWordWrap(True)
+        self.sign_up_link_2.setWordWrap(True)
+        self.title.setWordWrap(True)
 
         # button clicked
         self.pushButton.clicked.connect(self.checkUser)

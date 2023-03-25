@@ -14,7 +14,7 @@ class File_upload_Window(object):
     
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(668, 429)
+        MainWindow.resize(850, 522)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -35,7 +35,7 @@ class File_upload_Window(object):
         self.label = QtWidgets.QLabel(self.frame)
         self.label.setGeometry(QtCore.QRect(40, 90, 130, 29))
         font = QtGui.QFont()
-        font.setPointSize(24)
+        font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
         self.label.setFont(font)
@@ -82,7 +82,7 @@ class File_upload_Window(object):
             self.title.sizePolicy().hasHeightForWidth())
         self.title.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
-        font.setPointSize(20)
+        font.setPointSize(16)
         self.title.setFont(font)
         self.title.setAutoFillBackground(False)
         self.title.setStyleSheet("width:100%;\n" "color:black;")
@@ -134,6 +134,7 @@ class File_upload_Window(object):
         self.lineEdit.raise_()
         self.pushButton.raise_()
         self.title.raise_()
+        self.title.setGeometry(QtCore.QRect(40, 45, 668, 35))
         self.continueBtn.raise_()
         self.horizontalLayout.addWidget(self.frame_2)
         self.gridLayout.addWidget(self.widget, 0, 0, 1, 1)
@@ -146,13 +147,25 @@ class File_upload_Window(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+     
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        
+       
+       
+        
+
         self.label.setMinimumSize(self.label.sizeHint())
         self.label_2.setMinimumSize(self.label_2.sizeHint())
         self.label.setWordWrap(True)
         self.label_2.setWordWrap(True)
-
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        
+       
+      
+       
+       
 
         self.pushButton.clicked.connect(self.browsefiles)
 
@@ -173,13 +186,13 @@ class File_upload_Window(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "QuizMaster"))
+        self.label.setText(_translate("MainWindow", "QuizMaster - MIT "))
         self.label_2.setText(
             _translate(
                 "MainWindow", "Think fast, score high. The ultimate Quiz App experience"
             )
         )
-        self.title.setText(_translate("MainWindow", "Upload paper "))
+        self.title.setText(_translate("MainWindow", "Upload a paper "))
         self.pushButton.setText(_translate("MainWindow", "Browse"))
         self.continueBtn.setText(_translate("MainWindow", "Upload File"))
         self.continueBtn.clicked.connect(self.upload_File)
