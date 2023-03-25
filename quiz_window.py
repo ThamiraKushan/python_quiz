@@ -13,11 +13,11 @@ from quession import QuessionAnswer
 
 
 class Ui_quiz(object):
-    
-    def __init__(self,data):
+
+    def __init__(self, data):
         self.data = data
-        self.current_question=1
-        self.checkPoint=1
+        self.current_question = 1
+        self.checkPoint = 1
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -114,39 +114,44 @@ class Ui_quiz(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow,self.data)
+        self.retranslateUi(MainWindow, self.data)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
 # ........................
         def clicked():
             self.current_question = self.current_question+1
             print(f"..quize...{self.current_question}")
-            self.retranslateUi(MainWindow,self.data)
+            self.retranslateUi(MainWindow, self.data)
         self.pushButton.clicked.connect(clicked)
         # .............
 
-    def retranslateUi(self, MainWindow,data):
+    def retranslateUi(self, MainWindow, data):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_4.setText(_translate("MainWindow", "Choose the correct answer"))
+        self.label_4.setText(_translate(
+            "MainWindow", "Choose the correct answer"))
         self.pushButton.setText(_translate("MainWindow", "Next"))
         self.label.setText(_translate("MainWindow", "QuizMaster"))
-        
+
         print("before if 1 u")
-        Quizlist=[]
-        
+        Quizlist = []
 
         for item in data:
             if self.current_question == item[2]:
-                        Quizlist.append(item)
+                Quizlist.append(item)
 
-        if len(Quizlist) >0:
-            self.label_7.setText(_translate("MainWindow", f"Q{Quizlist[0][2]}."))
+        if len(Quizlist) > 0:
+            self.label_7.setText(_translate(
+                "MainWindow", f"Q{Quizlist[0][2]}."))
             self.label_8.setText(_translate("MainWindow", f"{Quizlist[0][3]}"))
-            self.radioButton_1.setText(_translate("MainWindow", f"{Quizlist[0][6]}"))
-            self.radioButton_2.setText(_translate("MainWindow", f"{Quizlist[1][6]}"))
-            self.radioButton_3.setText(_translate("MainWindow", f"{Quizlist[2][6]}"))
-            self.radioButton_4.setText(_translate("MainWindow", f"{Quizlist[3][6]}"))
+            self.radioButton_1.setText(_translate(
+                "MainWindow", f"{Quizlist[0][6]}"))
+            self.radioButton_2.setText(_translate(
+                "MainWindow", f"{Quizlist[1][6]}"))
+            self.radioButton_3.setText(_translate(
+                "MainWindow", f"{Quizlist[2][6]}"))
+            self.radioButton_4.setText(_translate(
+                "MainWindow", f"{Quizlist[3][6]}"))
         else:
             self.label_7.setText(_translate("MainWindow", f"1"))
             self.label_8.setText(_translate("MainWindow", f"2"))
@@ -156,8 +161,6 @@ class Ui_quiz(object):
             self.radioButton_4.setText(_translate("MainWindow", f"0"))
             # change the butto name
             self.pushButton.setText(_translate("MainWindow", "View"))
-        
-        
 
 
 if __name__ == "__main__":
