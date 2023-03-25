@@ -24,7 +24,7 @@ class Ui_Result(object):
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(304, 323)
+        MainWindow.resize(340, 380)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -70,7 +70,7 @@ class Ui_Result(object):
         )
         self.pushButton.setObjectName("pushButton")
         self.label = QtWidgets.QLabel(self.frame_2)
-        self.label.setGeometry(QtCore.QRect(0, 0, 311, 49))
+        self.label.setGeometry(QtCore.QRect(0, 0, 340, 49))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label.setFont(font)
@@ -148,7 +148,7 @@ class Ui_Result(object):
         self.gridLayout.addWidget(self.widget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 304, 24))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 340, 24))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)

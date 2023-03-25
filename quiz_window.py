@@ -146,7 +146,7 @@ class Ui_quiz(object):
     def Open_ResultWindow(self):
 
         
-        self.MainWindow_R = QtWidgets.QMainWindow()
+        self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Result(self.GivenAnswers)
         self.ui.setupUi(self.window)
         MainWindow.hide()
