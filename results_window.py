@@ -9,9 +9,19 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from quession import QuessionAnswer
+from answer_window import Ui_AnswerWindow
 
 
-class Ui_MainWindow(object):
+class Ui_Result(object):
+
+    def __init__(self,GivenAnswer=[]):
+        self.GivenAnswer = GivenAnswer 
+        self.correct_ = 0
+        self.incorrect_ = 0
+        self.ObjQuiz = QuessionAnswer()
+        self.CorectAnswer =  self.ObjQuiz.ViewCorrectAnswer()
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(304, 323)
@@ -145,30 +155,58 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+        self.CheckAnswer()
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        
+    # open new window
+    def Open_AnswerWindow(self):
+        
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_AnswerWindow()
+        self.ui.setupUi(self.window)
+        MainWindow.hide()
+        self.window.show()
+
+    def CheckAnswer(self):
+        # print(self.GivenAnswer)
+        
+        for i,item in enumerate(self.CorectAnswer):
+            if item[8] == self.GivenAnswer[i]:
+                self.correct_ += 1
+            else:
+                self.incorrect_ +=1 
+
+        print("  correct answer is inside ",self.correct_)    
 
     def retranslateUi(self, MainWindow):
+        print("  correct answer is outside ",self.correct_)
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_4.setText(_translate("MainWindow", "Results"))
-        self.pushButton.setText(_translate("MainWindow", "Answers"))
+        
         self.label.setText(_translate("MainWindow", "QuizMaster"))
         self.label_8.setText(_translate("MainWindow", "Your score :"))
-        self.label_9.setText(_translate("MainWindow", "70%"))
-        self.label_10.setText(_translate("MainWindow", "7"))
+        self.label_9.setText(_translate("MainWindow", f"{(self.correct_/len(self.CorectAnswer)*100)} %"))
+     
         self.label_11.setText(_translate("MainWindow", "Correct answers :"))
-        self.label_12.setText(_translate("MainWindow", "3"))
+        self.label_10.setText(_translate("MainWindow", f"{self.correct_}"))
         self.label_13.setText(_translate("MainWindow", "Wrong answers : "))
+        self.label_12.setText(_translate("MainWindow", f"{self.incorrect_}"))
         self.pushButton_secondary.setText(_translate("MainWindow", "Exit"))
 
+        self.pushButton.setText(_translate("MainWindow", "Answers"))
+        self.pushButton.clicked.connect(self.Open_AnswerWindow)
+
+
+    
 
 if __name__ == "__main__":
     import sys
 
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_Result()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

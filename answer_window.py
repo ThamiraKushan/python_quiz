@@ -16,8 +16,10 @@ class Ui_AnswerWindow(object):
 
     current_question = 0
 
-    def __init__(self, data):
-        self.data = data
+    def __init__(self):
+        self.ObjQuiz = QuessionAnswer()
+        self.data = self.ObjQuiz.ViewCorrectAnswer()
+        
 
     def setupUi(self, MainWindow):
 
@@ -165,11 +167,10 @@ class Ui_AnswerWindow(object):
 if __name__ == "__main__":
     import sys
 
-    newObj = QuessionAnswer()
 
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_AnswerWindow(newObj.ViewData())
+    ui = Ui_AnswerWindow()
     ui.setupUi(MainWindow)
 
     MainWindow.show()

@@ -10,14 +10,18 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from quession import QuessionAnswer
+from results_window import Ui_Result
 
 
 class Ui_quiz(object):
     
-    def __init__(self,data):
-        self.data = data
+    def __init__(self):
+        newObj = QuessionAnswer()
+        
+        self.data = newObj.quiz()
         self.current_question=1
         self.checkPoint=1
+        self.GivenAnswers=[]
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -120,11 +124,24 @@ class Ui_quiz(object):
 # ........................
         def clicked():
             self.current_question = self.current_question+1
-            print(f"..quize...{self.current_question}")
+            # print(f"..quize...{self.current_question}")
+            
+            print(self.answer)
+            self.GivenAnswers.append(self.answer)
             self.retranslateUi(MainWindow,self.data)
+
         self.pushButton.clicked.connect(clicked)
         # .............
 
+    # open new window
+    def Open_ResultWindow(self):
+        print(self.GivenAnswers)
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_Result(self.GivenAnswers)
+        self.ui.setupUi(self.window)
+        MainWindow.hide()
+        self.window.show()
+        
     def retranslateUi(self, MainWindow,data):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -141,12 +158,22 @@ class Ui_quiz(object):
                         Quizlist.append(item)
 
         if len(Quizlist) >0:
+            self.answer=''
+            self.radioButton_1.setChecked(0)
+            self.radioButton_2.setChecked(False)
+            self.radioButton_3.setChecked(0)
+            self.radioButton_4.setChecked(0)
+            # ....................
             self.label_7.setText(_translate("MainWindow", f"Q{Quizlist[0][2]}."))
             self.label_8.setText(_translate("MainWindow", f"{Quizlist[0][3]}"))
             self.radioButton_1.setText(_translate("MainWindow", f"{Quizlist[0][6]}"))
+            self.radioButton_1.toggled.connect(lambda:self.radio_button_selected(Quizlist[0][5]))
             self.radioButton_2.setText(_translate("MainWindow", f"{Quizlist[1][6]}"))
+            self.radioButton_2.toggled.connect(lambda:self.radio_button_selected(Quizlist[1][5]))
             self.radioButton_3.setText(_translate("MainWindow", f"{Quizlist[2][6]}"))
+            self.radioButton_3.toggled.connect(lambda:self.radio_button_selected(Quizlist[2][5]))
             self.radioButton_4.setText(_translate("MainWindow", f"{Quizlist[3][6]}"))
+            self.radioButton_4.toggled.connect(lambda:self.radio_button_selected(Quizlist[3][5]))
         else:
             self.label_7.setText(_translate("MainWindow", f"1"))
             self.label_8.setText(_translate("MainWindow", f"2"))
@@ -155,17 +182,22 @@ class Ui_quiz(object):
             self.radioButton_3.setText(_translate("MainWindow", f"5"))
             self.radioButton_4.setText(_translate("MainWindow", f"0"))
             # change the butto name
-            self.pushButton.setText(_translate("MainWindow", "View"))
-        
+            self.pushButton.setText(_translate("MainWindow", "View Results"))
+
+            self.pushButton.clicked.connect(self.Open_ResultWindow)
+    
+    def radio_button_selected(self, button):
+            self.answer = button
+            # print(self.answer)
         
 
 
 if __name__ == "__main__":
     import sys
-    newObj = QuessionAnswer()
+    
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow(newObj.quiz())
+    ui = Ui_quiz()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
