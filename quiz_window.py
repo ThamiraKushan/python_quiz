@@ -118,6 +118,11 @@ class Ui_quiz(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+        self.label.setMinimumSize(self.label.sizeHint())
+        self.label_4.setMinimumSize(self.label_4.sizeHint())
+        self.label_7.setMinimumSize(self.label_7.sizeHint())
+        self.label_8.setMinimumSize(self.label_8.sizeHint())
+
         self.retranslateUi(MainWindow, self.data)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 

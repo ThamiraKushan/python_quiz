@@ -14,6 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from connection import db_connection
 from quiz_window import Ui_quiz
 from file_upload import File_upload_Window
+from sign_up import signup_form
 
 
 class Ui_form(object):
@@ -46,15 +47,18 @@ class Ui_form(object):
         self.label.setFont(font)
         self.label.setStyleSheet("color:white;")
         self.label.setObjectName("label")
+        self.label.setMinimumSize(self.label.sizeHint())
+        # self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2 = QtWidgets.QLabel(self.frame)
         self.label_2.setGeometry(QtCore.QRect(40, 140, 251, 91))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.label_2.setFont(font)
         self.label_2.setStyleSheet("color:white;")
-        self.label_2.setAlignment(
-            QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop
-        )
+
+        self.label_2.setMinimumSize(self.label.sizeHint())
+        # self.label_2.setAlignment(QtCore.Qt.AlignCenter)
+
         self.label_2.setWordWrap(True)
         self.label_2.setObjectName("label_2")
         self.horizontalLayout.addWidget(self.frame)
@@ -84,13 +88,17 @@ class Ui_form(object):
         )
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.label_6 = QtWidgets.QLabel(self.frame_2)
-        self.label_6.setGeometry(QtCore.QRect(40, 170, 91, 16))
+        self.label_6.setGeometry(QtCore.QRect(40, 162, 91, 16))
         self.label_6.setStyleSheet("color: #344054;")
         self.label_6.setObjectName("label_6")
+        self.label_6.setMinimumSize(self.label.sizeHint())
+        # self.label_6.setAlignment(QtCore.Qt.AlignCenter)
         self.label_5 = QtWidgets.QLabel(self.frame_2)
-        self.label_5.setGeometry(QtCore.QRect(40, 90, 91, 16))
+        self.label_5.setGeometry(QtCore.QRect(40, 82, 91, 16))
         self.label_5.setStyleSheet("color: #344054;")
         self.label_5.setObjectName("label_5")
+        self.label_5.setMinimumSize(self.label.sizeHint())
+        # self.label_6.setAlignment(QtCore.Qt.AlignCenter)
         self.sign_up_link = QtWidgets.QLabel(self.frame_2)
         self.sign_up_link.setGeometry(QtCore.QRect(40, 245, 71, 16))
         self.sign_up_link.setStyleSheet(
@@ -132,6 +140,8 @@ class Ui_form(object):
         self.label_7.setGeometry(QtCore.QRect(40, 245, 151, 16))
         self.label_7.setStyleSheet("color:rgb(68, 79, 116)")
         self.label_7.setObjectName("label_7")
+        self.label_7.setMinimumSize(self.label.sizeHint())
+        # self.label_7.setAlignment(QtCore.Qt.AlignCenter)
         self.sign_up_link_2 = QtWidgets.QLabel(self.frame_2)
         self.sign_up_link_2.setGeometry(QtCore.QRect(190, 245, 71, 16))
         self.sign_up_link_2.setStyleSheet(
@@ -172,18 +182,29 @@ class Ui_form(object):
                 "MainWindow", "Think fast, score high. The ultimate Quiz App experience"
             )
         )
-        self.lineEdit.setPlaceholderText(_translate("MainWindow", "Enter ID number"))
-        self.lineEdit_2.setPlaceholderText(_translate("MainWindow", "Enter Password"))
+        self.lineEdit.setPlaceholderText(
+            _translate("MainWindow", "Enter ID number"))
+        self.lineEdit_2.setPlaceholderText(
+            _translate("MainWindow", "Enter Password"))
         self.label_6.setText(_translate("MainWindow", "Password"))
         self.label_5.setText(_translate("MainWindow", "ID Number"))
         self.sign_up_link.setText(_translate("MainWindow", "Sign Up"))
         self.title.setText(_translate("MainWindow", "Sign in"))
         self.pushButton.setText(_translate("MainWindow", "Sign in"))
-        self.label_7.setText(_translate("MainWindow", "Don’t have an account?"))
+        self.label_7.setText(_translate(
+            "MainWindow", "Don’t have an account?"))
         self.sign_up_link_2.setText(_translate("MainWindow", "Sign Up"))
+
+
+        self.label.setMinimumSize(self.label.sizeHint())
+        self.label_2.setMinimumSize(self.label_2.sizeHint())
+        self.label_5.setMinimumSize(self.label_5.sizeHint())
+        self.label_6.setMinimumSize(self.label_6.sizeHint())
+        self.label_7.setMinimumSize(self.label_7.sizeHint())
 
         # button clicked
         self.pushButton.clicked.connect(self.checkUser)
+        self.sign_up_link_2.mousePressEvent = self.register
 
     # def get_admin(self):
     #     cursor = db_connection.cursor()
@@ -191,7 +212,15 @@ class Ui_form(object):
     #     # Fetch the results
     #     results = cursor.fetchall()
     #     return results
-    def openWindow(self):
+
+    def register(self, event):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = signup_form()
+        self.ui.setupUi(self.window)
+        MainWindow.hide()
+        self.window.show()
+
+    def openQuiz(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_quiz()
         self.ui.setupUi(self.window)
@@ -204,7 +233,7 @@ class Ui_form(object):
         self.ui.setupUi(self.window)
         MainWindow.hide()
         self.window.show()
-        
+
     def checkUser(self):
         user_id = self.lineEdit.text()
         password = self.lineEdit_2.text()
@@ -231,9 +260,9 @@ class Ui_form(object):
             if result["user_role"] == "admin":
                 print("admin")
                 self.openFileUpload()
-            else: 
+            else:
                 print("student")
-                self.openWindow()
+                self.openQuiz()
         else:
             print("failed")
 

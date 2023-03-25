@@ -11,12 +11,12 @@
 import hashlib
 from PyQt5 import QtCore, QtGui, QtWidgets
 from connection import db_connection
-from loginUi import Ui_form
+from quiz_window import Ui_quiz
 
 cursor = db_connection.cursor(dictionary=True)
 
 
-class Ui_MainWindow(object):
+class signup_form(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(657, 522)
@@ -158,6 +158,14 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+        self.label.setMinimumSize(self.label.sizeHint())
+        self.label_2.setMinimumSize(self.label_2.sizeHint())
+        self.label_4.setMinimumSize(self.label_4.sizeHint())
+        self.label_5.setMinimumSize(self.label_5.sizeHint())
+        self.label_6.setMinimumSize(self.label_6.sizeHint())
+        self.label_7.setMinimumSize(self.label_7.sizeHint())
+        self.label_8.setMinimumSize(self.label_8.sizeHint())
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -191,13 +199,13 @@ class Ui_MainWindow(object):
 
         self.pushButton.clicked.connect(self.reg_user)
 
-    def openFileUpload(self):
+
+    def openQuiz(self):
         self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_form()
+        self.ui = Ui_quiz()
         self.ui.setupUi(self.window)
         MainWindow.hide()
         self.window.show()
-
 
     def reg_user(self):
         id = ""
@@ -232,7 +240,7 @@ class Ui_MainWindow(object):
                 values = (None, user_id, hash_password, email, status, user_role)
                 cursor.execute(sql, values)
                 db_connection.commit()
-                self.openFileUpload()
+                self.openQuiz()
             else:
                 user_exists = True
                 print(user_exists)
@@ -247,7 +255,7 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = signup_form()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

@@ -141,6 +141,9 @@ class File_upload_Window(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+        self.label.setMinimumSize(self.label.sizeHint())
+        self.label_2.setMinimumSize(self.label_2.sizeHint())
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
