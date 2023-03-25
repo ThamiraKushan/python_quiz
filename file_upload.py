@@ -4,10 +4,14 @@ import os
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog
+from quession import QuessionAnswer
 
 
 class File_upload_Window(object):
 
+    def __init__(self):
+        self.ObjQuiz = QuessionAnswer()
+    
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(668, 429)
@@ -157,6 +161,9 @@ class File_upload_Window(object):
     #         directory = os.path.expanduser("~")  # get user's home directory
     #         fname = QFileDialog.getOpenFileName(self, "Open file", directory)[0]
     #         self.lineEdit.setText(fname[0])
+    def upload_File(self):
+        self.ObjQuiz.Insert_Data()
+ 
 
     def browsefiles(self):
         fname = QFileDialog.getOpenFileName(
@@ -176,6 +183,7 @@ class File_upload_Window(object):
         self.title.setText(_translate("MainWindow", "Upload a paper "))
         self.pushButton.setText(_translate("MainWindow", "Browse"))
         self.continueBtn.setText(_translate("MainWindow", "Upload File"))
+        self.continueBtn.clicked.connect(self.upload_File)
 
 
 if __name__ == "__main__":

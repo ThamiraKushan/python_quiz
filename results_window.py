@@ -15,12 +15,13 @@ from answer_window import Ui_AnswerWindow
 
 class Ui_Result(object):
 
-    def __init__(self, GivenAnswer=[]):
-        self.GivenAnswer = GivenAnswer
-        self.correct_ = 0
-        self.incorrect_ = 0
+    def __init__(self,User_Id):
+       
+        self.User_Id = User_Id
         self.ObjQuiz = QuessionAnswer()
         self.CorectAnswer = self.ObjQuiz.ViewCorrectAnswer()
+
+        
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -177,32 +178,28 @@ class Ui_Result(object):
         # MainWindow.hide()
         self.window.show()
 
-    def CheckAnswer(self):
-        # print(self.GivenAnswer)
+   
 
-        for i, item in enumerate(self.CorectAnswer):
-            if item[8] == self.GivenAnswer[i]:
-                self.correct_ += 1
-            else:
-                self.incorrect_ += 1
-
-        print("  correct answer is inside ", self.correct_)
+        # print("  correct answer is inside ",self.correct_)    
 
     def retranslateUi(self, MainWindow):
-        print("  correct answer is outside ", self.correct_)
+
+        StudentMrks = self.ObjQuiz.ViewStudentsMarks(self.User_Id)
+        StudentMrks=StudentMrks[0]
+        print(StudentMrks)
+        MyMarks=StudentMrks[3]/(StudentMrks[3]+StudentMrks[4])*100
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_4.setText(_translate("MainWindow", "Results"))
 
         self.label.setText(_translate("MainWindow", "QuizMaster"))
         self.label_8.setText(_translate("MainWindow", "Your score :"))
-        self.label_9.setText(_translate(
-            "MainWindow", f"{(self.correct_/len(self.CorectAnswer)*100)} %"))
-
+        self.label_9.setText(_translate("MainWindow", f"{MyMarks} %"))
+     
         self.label_11.setText(_translate("MainWindow", "Correct answers :"))
-        self.label_10.setText(_translate("MainWindow", f"{self.correct_}"))
+        self.label_10.setText(_translate("MainWindow", f"{StudentMrks[3]}"))
         self.label_13.setText(_translate("MainWindow", "Wrong answers : "))
-        self.label_12.setText(_translate("MainWindow", f"{self.incorrect_}"))
+        self.label_12.setText(_translate("MainWindow", f"{StudentMrks[4]}"))
         self.pushButton_secondary.setText(_translate("MainWindow", "Exit"))
 
         self.pushButton.setText(_translate("MainWindow", "Answers"))
