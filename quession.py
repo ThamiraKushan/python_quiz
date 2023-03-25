@@ -54,7 +54,7 @@ class QuessionAnswer(object):
         cursor.close()
         db_connection.close()
 
-    def ViewData(self):
+    def ViewCorrectAnswer(self):
         # sql = "select * from queion"
 
         # Define the SQL query
@@ -75,7 +75,7 @@ class QuessionAnswer(object):
 
         # Close the cursor and connection
         cursor.close()
-        db_connection.close()
+        # db_connection.close()
 
         return results
 
@@ -96,6 +96,6 @@ class QuessionAnswer(object):
 
         # Close the cursor and connection
         cursor.close()
-        db_connection.close()
+        # db_connection.close()
 
         return results
