@@ -73,6 +73,7 @@ class File_upload_Window(object):
         self.lineEdit.setObjectName("lineEdit")
         self.title = QtWidgets.QLabel(self.frame_2)
         self.title.setEnabled(True)
+        self.title.setGeometry(QtCore.QRect(40, 30, 251, 48))
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred
         )
