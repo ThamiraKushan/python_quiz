@@ -191,9 +191,9 @@ class Ui_form(object):
     #     # Fetch the results
     #     results = cursor.fetchall()
     #     return results
-    def openWindow(self):
+    def openWindow(self,User_Id):
         self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_quiz()
+        self.ui = Ui_quiz(User_Id)
         self.ui.setupUi(self.window)
         MainWindow.hide()
         self.window.show()
@@ -220,7 +220,7 @@ class Ui_form(object):
         #         print("login faild")
 
         cursor = db_connection.cursor(dictionary=True)
-        sql = "SELECT user_role,email FROM user WHERE user_id = %s AND password = %s;"
+        sql = "SELECT user_role,email,id FROM user WHERE user_id = %s AND password = %s;"
         cursor.execute(sql, (user_id, hash_password))
         result = cursor.fetchone()
         print(result)
@@ -233,7 +233,7 @@ class Ui_form(object):
                 self.openFileUpload()
             else: 
                 print("student")
-                self.openWindow()
+                self.openWindow(result["id"])
         else:
             print("failed")
 

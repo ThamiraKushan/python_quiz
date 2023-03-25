@@ -15,10 +15,10 @@ from results_window import Ui_Result
 
 class Ui_quiz(object):
 
-    def __init__(self):
-        newObj = QuessionAnswer()
-
-        self.data = newObj.quiz()
+    def __init__(self,User_Id=1):
+        self.newObj = QuessionAnswer()
+        self.User_Id = User_Id
+        self.data = self.newObj.quiz()
         self.current_question = 1
         self.checkPoint = 1
         self.GivenAnswers = []
@@ -70,6 +70,10 @@ class Ui_quiz(object):
             ""
         )
         self.pushButton.setObjectName("pushButton")
+
+        # .......................
+        
+        # ..........................
         self.label_7 = QtWidgets.QLabel(self.frame_2)
         self.label_7.setGeometry(QtCore.QRect(40, 90, 32, 19))
         font = QtGui.QFont()
@@ -126,7 +130,7 @@ class Ui_quiz(object):
             self.current_question = self.current_question+1
             # print(f"..quize...{self.current_question}")
 
-            print(self.answer)
+            # print(self.answer)
             self.GivenAnswers.append(self.answer)
             self.retranslateUi(MainWindow, self.data)
 
@@ -136,11 +140,12 @@ class Ui_quiz(object):
     # open new window
     def Open_ResultWindow(self):
 
-        
-        self.MainWindow_R = QtWidgets.QMainWindow()
-        self.ui = Ui_Result(self.GivenAnswers)
+        self.newObj.InsertMaks(self.GivenAnswers,self.User_Id)
+        print(self.User_Id)
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_Result(self.User_Id)
         self.ui.setupUi(self.window)
-        MainWindow.hide()
+        # MainWindow.hide()
         self.window.show()
 
     def retranslateUi(self, MainWindow, data):
@@ -151,7 +156,7 @@ class Ui_quiz(object):
         self.pushButton.setText(_translate("MainWindow", "Next"))
         self.label.setText(_translate("MainWindow", "QuizMaster"))
 
-        print("before if 1 u")
+        # print("before if 1 u")
         Quizlist = []
 
         for item in data:
@@ -185,15 +190,17 @@ class Ui_quiz(object):
             self.radioButton_4.toggled.connect(
                 lambda: self.radio_button_selected(Quizlist[3][5]))
         else:
-            self.label_7.setText(_translate("MainWindow", f"1"))
-            self.label_8.setText(_translate("MainWindow", f"2"))
-            self.radioButton_1.setText(_translate("MainWindow", f"3"))
-            self.radioButton_2.setText(_translate("MainWindow", f"4"))
-            self.radioButton_3.setText(_translate("MainWindow", f"5"))
-            self.radioButton_4.setText(_translate("MainWindow", f"0"))
+            self.label_7.hide()
+            self.label_8.setText(_translate("MainWindow", " You Have successfully complted. Please submit"))
+            self.label_8.setMinimumSize(self.label_8.sizeHint())
+            self.label_4.hide()
+            self.radioButton_1.hide()
+            self.radioButton_2.hide()
+            self.radioButton_3.hide()
+            self.radioButton_4.hide()
             # change the butto name
-            self.pushButton.setText(_translate("MainWindow", "View Results"))
-
+   
+            self.pushButton.setText(_translate("MainWindow", "Submit"))
             self.pushButton.clicked.connect(self.Open_ResultWindow)
 
     def radio_button_selected(self, button):

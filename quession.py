@@ -3,6 +3,22 @@ import csv
 
 
 class QuessionAnswer(object):
+
+    def __init__(self):
+
+        self.correct_ = 0
+        self.incorrect_ = 0
+        self.db_connection = db_connection
+        self.cursor = self.db_connection.cursor()
+
+        sql0 = "SELECT max(PaperTable_Id) FROM paper"
+        self.cursor.execute(sql0)
+        result = self.cursor.fetchone()
+        # for item in result:
+        #     self.LatestPaper = item[0]
+        # print(result[0])
+        self.LatestPaper= result[0]
+
     def Insert_Data(self):
         print("a")
 
@@ -52,7 +68,33 @@ class QuessionAnswer(object):
 
         # close the cursor and database connection
         cursor.close()
-        db_connection.close()
+        # db_connection.close()
+
+    def InsertMaks(self,Maks,UserID):
+
+        print("im in insertmask\\")
+        print(Maks)
+        print(UserID)
+        for i,item in enumerate(self.ViewCorrectAnswer()):
+            if item[8] == Maks[i]:
+                self.correct_ += 1
+            else:
+                self.incorrect_ +=1 
+        
+
+        sql1 = "INSERT INTO marks (Student_id, Paper_id_n,Correct_Answers,Wrong_Answers) VALUES (%s, %s, %s, %s)"
+        values = (UserID, self.LatestPaper,self.correct_,self.incorrect_)
+        print(values)
+        self.cursor.execute(sql1, values)
+
+        self.db_connection.commit()
+
+        # close the cursor and database connection
+        self.cursor.close()
+        # self.db_connection.close()
+
+      
+        
 
     def ViewCorrectAnswer(self):
         # sql = "select * from queion"
@@ -69,19 +111,46 @@ class QuessionAnswer(object):
         results = cursor.fetchall()
 
         # Process the results
-        for row in results:
+        # for row in results:
             # Do something with each row of data
-            print(row)
+            # print(row)
 
         # Close the cursor and connection
-        cursor.close()
+        # cursor.close()
+        # db_connection.close()
+
+        return results
+    
+    def ViewStudentsMarks(self,StudentID):
+        # sql = "select * from queion"
+
+        # Define the SQL query
+        query = f"select * from marks where Student_id={StudentID} AND Paper_id_n ={self.LatestPaper}"
+        # cursor = db_connection.cursor()
+        # Execute the query
+        self.cursor.execute(query)
+
+        # Fetch the results
+        results = self.cursor.fetchall()
+
+        # Process the results
+        # for row in results:
+        #     # Do something with each row of data
+        #     print(row)
+
+        # Close the cursor and connection
+        self.cursor.close()
         # db_connection.close()
 
         return results
 
     def quiz(self):
         # Define the SQL query
-        query = "select q.QsTable_id_n,q.PaperTable_Id,q.Q_No,q.Quession,ans.Answer_Id,ans.Answer_No,Answer,Is_Correct from queion q INNER JOIN answer ans on q.QsTable_id_n = ans.QsTable_id_n"
+        query = "select q.QsTable_id_n,q.PaperTable_Id,q.Q_No,q.Quession,ans.Answer_Id,ans.Answer_No,Answer,Is_Correct\
+                from queion q \
+                INNER JOIN answer ans on q.QsTable_id_n = ans.QsTable_id_n\
+                where  q.PaperTable_Id = (SELECT MAX(PaperTable_Id) FROM paper )\
+                order by q.PaperTable_Id,ans.Answer_Id"
         cursor = db_connection.cursor()
         # Execute the query
         cursor.execute(query)
