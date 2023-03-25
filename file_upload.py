@@ -4,7 +4,6 @@ import os
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog
-from PyQt5.uic import loadUi
 
 
 class Ui_MainWindow(object):
