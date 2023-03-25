@@ -14,14 +14,14 @@ from results_window import Ui_Result
 
 
 class Ui_quiz(object):
-    
+
     def __init__(self):
         newObj = QuessionAnswer()
-        
+
         self.data = newObj.quiz()
-        self.current_question=1
-        self.checkPoint=1
-        self.GivenAnswers=[]
+        self.current_question = 1
+        self.checkPoint = 1
+        self.GivenAnswers = []
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -118,17 +118,17 @@ class Ui_quiz(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow,self.data)
+        self.retranslateUi(MainWindow, self.data)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
 # ........................
         def clicked():
             self.current_question = self.current_question+1
             # print(f"..quize...{self.current_question}")
-            
+
             print(self.answer)
             self.GivenAnswers.append(self.answer)
-            self.retranslateUi(MainWindow,self.data)
+            self.retranslateUi(MainWindow, self.data)
 
         self.pushButton.clicked.connect(clicked)
         # .............
@@ -139,53 +139,51 @@ class Ui_quiz(object):
         
         self.MainWindow_R = QtWidgets.QMainWindow()
         self.ui = Ui_Result(self.GivenAnswers)
-        self.ui.setupUi(self.MainWindow_R)
-        # MainWindow.hide()
-        
-        # sys.exit(app.exec_())
-        self.MainWindow_R.show()
-        
-      
-        # .............
-        print(self.GivenAnswers)
-        # self.window = QtWidgets.QMainWindow()
-        # self.ui = Ui_Result(self.GivenAnswers)
-        # self.ui.setupUi(self.window)
-        # MainWindow.hide()
-        # self.window.show()
+        self.ui.setupUi(self.window)
+        MainWindow.hide()
+        self.window.show()
         
     def retranslateUi(self, MainWindow,data):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_4.setText(_translate("MainWindow", "Choose the correct answer"))
+        self.label_4.setText(_translate(
+            "MainWindow", "Choose the correct answer"))
         self.pushButton.setText(_translate("MainWindow", "Next"))
         self.label.setText(_translate("MainWindow", "QuizMaster"))
-        
+
         print("before if 1 u")
-        Quizlist=[]
-        
+        Quizlist = []
 
         for item in data:
             if self.current_question == item[2]:
-                        Quizlist.append(item)
+                Quizlist.append(item)
 
-        if len(Quizlist) >0:
-            self.answer=''
+        if len(Quizlist) > 0:
+            self.answer = ''
             self.radioButton_1.setChecked(0)
             self.radioButton_2.setChecked(False)
             self.radioButton_3.setChecked(0)
             self.radioButton_4.setChecked(0)
             # ....................
-            self.label_7.setText(_translate("MainWindow", f"Q{Quizlist[0][2]}."))
+            self.label_7.setText(_translate(
+                "MainWindow", f"Q{Quizlist[0][2]}."))
             self.label_8.setText(_translate("MainWindow", f"{Quizlist[0][3]}"))
-            self.radioButton_1.setText(_translate("MainWindow", f"{Quizlist[0][6]}"))
-            self.radioButton_1.toggled.connect(lambda:self.radio_button_selected(Quizlist[0][5]))
-            self.radioButton_2.setText(_translate("MainWindow", f"{Quizlist[1][6]}"))
-            self.radioButton_2.toggled.connect(lambda:self.radio_button_selected(Quizlist[1][5]))
-            self.radioButton_3.setText(_translate("MainWindow", f"{Quizlist[2][6]}"))
-            self.radioButton_3.toggled.connect(lambda:self.radio_button_selected(Quizlist[2][5]))
-            self.radioButton_4.setText(_translate("MainWindow", f"{Quizlist[3][6]}"))
-            self.radioButton_4.toggled.connect(lambda:self.radio_button_selected(Quizlist[3][5]))
+            self.radioButton_1.setText(_translate(
+                "MainWindow", f"{Quizlist[0][6]}"))
+            self.radioButton_1.toggled.connect(
+                lambda: self.radio_button_selected(Quizlist[0][5]))
+            self.radioButton_2.setText(_translate(
+                "MainWindow", f"{Quizlist[1][6]}"))
+            self.radioButton_2.toggled.connect(
+                lambda: self.radio_button_selected(Quizlist[1][5]))
+            self.radioButton_3.setText(_translate(
+                "MainWindow", f"{Quizlist[2][6]}"))
+            self.radioButton_3.toggled.connect(
+                lambda: self.radio_button_selected(Quizlist[2][5]))
+            self.radioButton_4.setText(_translate(
+                "MainWindow", f"{Quizlist[3][6]}"))
+            self.radioButton_4.toggled.connect(
+                lambda: self.radio_button_selected(Quizlist[3][5]))
         else:
             self.label_7.setText(_translate("MainWindow", f"1"))
             self.label_8.setText(_translate("MainWindow", f"2"))
@@ -197,16 +195,15 @@ class Ui_quiz(object):
             self.pushButton.setText(_translate("MainWindow", "View Results"))
 
             self.pushButton.clicked.connect(self.Open_ResultWindow)
-    
+
     def radio_button_selected(self, button):
-            self.answer = button
-            # print(self.answer)
-        
+        self.answer = button
+        # print(self.answer)
 
 
 if __name__ == "__main__":
     import sys
-    
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_quiz()

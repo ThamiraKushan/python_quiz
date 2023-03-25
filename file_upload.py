@@ -6,7 +6,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog
 
 
-class Ui_MainWindow(object):
+class File_upload_Window(object):
     
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -178,7 +178,7 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = File_upload_Window()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

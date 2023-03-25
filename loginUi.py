@@ -13,6 +13,7 @@ import hashlib
 from PyQt5 import QtCore, QtGui, QtWidgets
 from connection import db_connection
 from quiz_window import Ui_quiz
+from file_upload import File_upload_Window
 
 
 class Ui_form(object):
@@ -196,6 +197,13 @@ class Ui_form(object):
         self.ui.setupUi(self.window)
         MainWindow.hide()
         self.window.show()
+
+    def openFileUpload(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = File_upload_Window()
+        self.ui.setupUi(self.window)
+        MainWindow.hide()
+        self.window.show()
         
     def checkUser(self):
         user_id = self.lineEdit.text()
@@ -216,11 +224,13 @@ class Ui_form(object):
         cursor.execute(sql, (user_id, hash_password))
         result = cursor.fetchone()
         print(result)
-        # print(result["user_role"])
+        if result:
+            print(result["user_role"])
 
-        if result != []:
+        if result != [] or result != None:
             if result["user_role"] == "admin":
                 print("admin")
+                self.openFileUpload()
             else: 
                 print("student")
                 self.openWindow()
