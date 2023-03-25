@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog
 
 
 class File_upload_Window(object):
-    
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(668, 429)
@@ -55,14 +55,14 @@ class File_upload_Window(object):
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setObjectName("frame_2")
         # self.lineEdit = QtWidgets.QLineEdit(self.frame_2)
-        self.lineEdit =  QtWidgets.QLabel(self.frame_2)
+        self.lineEdit = QtWidgets.QLabel(self.frame_2)
         self.lineEdit.setGeometry(QtCore.QRect(40, 110, 251, 42))
         self.lineEdit.setStyleSheet(
             "color:black;\n"
             "padding:10px;\n"
             "background: #FFFFFF;\n"
             "border: 1px solid #D0D5DD;\n"
-            
+
             "border-radius: 4px;"
         )
         # self.lineEdit.setPlaceholderText("")
@@ -74,7 +74,8 @@ class File_upload_Window(object):
         )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.title.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.title.sizePolicy().hasHeightForWidth())
         self.title.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(20)
@@ -154,13 +155,11 @@ class File_upload_Window(object):
     #         fname = QFileDialog.getOpenFileName(self, "Open file", directory)[0]
     #         self.lineEdit.setText(fname[0])
 
- 
-
     def browsefiles(self):
-        fname = QFileDialog.getOpenFileName(self,"Open File", '','All Files(*);;CSV(*.csv)')
+        fname = QFileDialog.getOpenFileName(
+            self, "Open File", '', 'All Files(*);;CSV(*.csv)')
         if fname:
             self.lineEdit.setText(fname[0])
- 
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

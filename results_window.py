@@ -15,12 +15,12 @@ from answer_window import Ui_AnswerWindow
 
 class Ui_Result(object):
 
-    def __init__(self,GivenAnswer=[]):
-        self.GivenAnswer = GivenAnswer 
+    def __init__(self, GivenAnswer=[]):
+        self.GivenAnswer = GivenAnswer
         self.correct_ = 0
         self.incorrect_ = 0
         self.ObjQuiz = QuessionAnswer()
-        self.CorectAnswer =  self.ObjQuiz.ViewCorrectAnswer()
+        self.CorectAnswer = self.ObjQuiz.ViewCorrectAnswer()
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -163,10 +163,10 @@ class Ui_Result(object):
         self.CheckAnswer()
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        
+
     # open new window
     def Open_AnswerWindow(self):
-        
+
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_AnswerWindow()
         self.ui.setupUi(self.window)
@@ -175,25 +175,26 @@ class Ui_Result(object):
 
     def CheckAnswer(self):
         # print(self.GivenAnswer)
-        
-        for i,item in enumerate(self.CorectAnswer):
+
+        for i, item in enumerate(self.CorectAnswer):
             if item[8] == self.GivenAnswer[i]:
                 self.correct_ += 1
             else:
-                self.incorrect_ +=1 
+                self.incorrect_ += 1
 
-        print("  correct answer is inside ",self.correct_)    
+        print("  correct answer is inside ", self.correct_)
 
     def retranslateUi(self, MainWindow):
-        print("  correct answer is outside ",self.correct_)
+        print("  correct answer is outside ", self.correct_)
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_4.setText(_translate("MainWindow", "Results"))
-        
+
         self.label.setText(_translate("MainWindow", "QuizMaster"))
         self.label_8.setText(_translate("MainWindow", "Your score :"))
-        self.label_9.setText(_translate("MainWindow", f"{(self.correct_/len(self.CorectAnswer)*100)} %"))
-     
+        self.label_9.setText(_translate(
+            "MainWindow", f"{(self.correct_/len(self.CorectAnswer)*100)} %"))
+
         self.label_11.setText(_translate("MainWindow", "Correct answers :"))
         self.label_10.setText(_translate("MainWindow", f"{self.correct_}"))
         self.label_13.setText(_translate("MainWindow", "Wrong answers : "))
@@ -203,8 +204,6 @@ class Ui_Result(object):
         self.pushButton.setText(_translate("MainWindow", "Answers"))
         self.pushButton.clicked.connect(self.Open_AnswerWindow)
 
-
-    
 
 if __name__ == "__main__":
     import sys

@@ -199,7 +199,6 @@ class signup_form(object):
 
         self.pushButton.clicked.connect(self.reg_user)
 
-
     def openQuiz(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_quiz()
@@ -221,7 +220,7 @@ class signup_form(object):
         hash_password_con = hash_obj_con.hexdigest()
         user_role = ''
         status = ''
-        
+
         # print('user_id', user_id)
         # print('email', email)
         # print('hash_password', hash_password)
@@ -237,7 +236,8 @@ class signup_form(object):
                 user_exists = False
                 print(user_exists)
                 sql = "INSERT INTO user (id, user_id, password, email, status, user_role) VALUES (%s,%s,%s,%s,%s,%s)"
-                values = (None, user_id, hash_password, email, status, user_role)
+                values = (None, user_id, hash_password,
+                          email, status, user_role)
                 cursor.execute(sql, values)
                 db_connection.commit()
                 self.openQuiz()
@@ -248,7 +248,6 @@ class signup_form(object):
         else:
             print("password error")
 
-   
 
 if __name__ == "__main__":
     import sys

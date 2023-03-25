@@ -19,7 +19,6 @@ class Ui_AnswerWindow(object):
     def __init__(self):
         self.ObjQuiz = QuessionAnswer()
         self.data = self.ObjQuiz.ViewCorrectAnswer()
-        
 
     def setupUi(self, MainWindow):
 
@@ -117,14 +116,13 @@ class Ui_AnswerWindow(object):
         self.label_7.setMinimumSize(self.label_7.sizeHint())
         self.label_8.setMinimumSize(self.label_8.sizeHint())
 
-
         self.retranslateUi(MainWindow, self.data)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        
+
         def clicked():
             self.current_question = self.current_question+1
             print(f".....{self.current_question}")
-            self.retranslateUi(MainWindow,self.data)
+            self.retranslateUi(MainWindow, self.data)
         self.pushButton.clicked.connect(clicked)
 
         def clicked():
@@ -172,7 +170,6 @@ class Ui_AnswerWindow(object):
 
 if __name__ == "__main__":
     import sys
-
 
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()

@@ -195,7 +195,6 @@ class Ui_form(object):
             "MainWindow", "Don’t have an account?"))
         self.sign_up_link_2.setText(_translate("MainWindow", "Sign Up"))
 
-
         self.label.setMinimumSize(self.label.sizeHint())
         self.label_2.setMinimumSize(self.label_2.sizeHint())
         self.label_5.setMinimumSize(self.label_5.sizeHint())
