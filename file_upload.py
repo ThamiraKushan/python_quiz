@@ -3,18 +3,19 @@
 import os
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog
+from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog,QWidget,QTableWidget, QTableWidgetItem
 from quession import QuessionAnswer
 
 
 class File_upload_Window(object):
 
     def __init__(self):
+        self.filepath=''
         self.ObjQuiz = QuessionAnswer()
     
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(850, 522)
+        MainWindow.resize(1180, 522)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -112,7 +113,7 @@ class File_upload_Window(object):
         )
         self.pushButton.setObjectName("pushButton")
         self.continueBtn = QtWidgets.QPushButton(self.frame_2)
-        self.continueBtn.setGeometry(QtCore.QRect(40, 280, 251, 48))
+        self.continueBtn.setGeometry(QtCore.QRect(320, 170, 251, 48))
         self.continueBtn.setStyleSheet(
             "#continueBtn{\n"
             "padding: 8px 16px;\n"
@@ -148,7 +149,16 @@ class File_upload_Window(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
-     
+        # this is message bar
+        self.label3 = QtWidgets.QLabel(self.frame)
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label3.setFont(font)
+        self.label3.setStyleSheet("color:yellow;")
+        self.label3.setObjectName("label3")
+        
+        self.label3.setGeometry(QtCore.QRect(70, 240, 651, 91))
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -163,7 +173,6 @@ class File_upload_Window(object):
         self.label.setWordWrap(True)
         self.label_2.setWordWrap(True)
         
-       
       
        
        
@@ -175,14 +184,24 @@ class File_upload_Window(object):
     #         fname = QFileDialog.getOpenFileName(self, "Open file", directory)[0]
     #         self.lineEdit.setText(fname[0])
     def upload_File(self):
-        self.ObjQuiz.Insert_Data()
+        if self.filepath !='':
+        #    self.label3.setText(self._translate("MainWindow", "Loading...."))
+        #    
+           message=self.ObjQuiz.Insert_Data(self.filepath)
+           print(message)
+               
+            #    self.label3.setText(self._translate("MainWindow", "Successfully uploaded ")) 
+        else:
+            print('Please open file')
  
 
     def browsefiles(self):
         fname = QFileDialog.getOpenFileName(
-            self, "Open File", '', 'All Files(*);;CSV(*.csv)')
-        if fname:
+        QWidget(), "Open File", '', 'CSV (*.csv)')
+        if fname[0]:
             self.lineEdit.setText(fname[0])
+            # print(fname[0])
+            self.filepath=fname[0]
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -193,6 +212,7 @@ class File_upload_Window(object):
                 "MainWindow", "Think fast, score high. The ultimate Quiz App experience"
             )
         )
+        # self.label3.setText(_translate("MainWindow", "Successfully uploaded "))
         self.title.setText(_translate("MainWindow", "Upload a paper "))
         self.pushButton.setText(_translate("MainWindow", "Browse"))
         self.continueBtn.setText(_translate("MainWindow", "Upload File"))

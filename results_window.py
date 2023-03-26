@@ -15,7 +15,7 @@ from answer_window import Ui_AnswerWindow
 
 class Ui_Result(object):
 
-    def __init__(self,User_Id):
+    def __init__(self,User_Id=1):
        
         self.User_Id = User_Id
         self.ObjQuiz = QuessionAnswer()
@@ -165,7 +165,7 @@ class Ui_Result(object):
         self.label_8.setWordWrap(True)
         self.label_9.setWordWrap(True)
 
-        self.CheckAnswer()
+        # self.CheckAnswer()
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 

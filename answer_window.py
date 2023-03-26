@@ -98,7 +98,7 @@ class Ui_AnswerWindow(object):
         font = QtGui.QFont()
         font.setPointSize(14)
         self.label_5.setFont(font)
-        self.label_5.setStyleSheet("")
+        self.label_5.setStyleSheet("color:red;\n")
         self.label_5.setObjectName("label_5")
         self.horizontalLayout.addWidget(self.frame_2)
         self.gridLayout.addWidget(self.widget, 0, 0, 1, 1)
@@ -125,11 +125,11 @@ class Ui_AnswerWindow(object):
         self.retranslateUi(MainWindow, self.data)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        def clicked():
-            self.current_question = self.current_question+1
-            print(f".....{self.current_question}")
-            self.retranslateUi(MainWindow, self.data)
-        self.pushButton.clicked.connect(clicked)
+        # def clicked():
+        #     self.current_question = self.current_question+1
+        #     print(f".....{self.current_question}")
+        #     self.retranslateUi(MainWindow, self.data)
+        # self.pushButton.clicked.connect(clicked)
 
         def clicked():
             self.current_question = self.current_question + 1
@@ -163,7 +163,7 @@ class Ui_AnswerWindow(object):
             self.label_7.setText(
                 _translate("MainWindow", f"{data[self.current_question][2]}")
             )
-
+            # this is question
             self.label_8.setText(
                 _translate("MainWindow", f"{data[self.current_question][3]}")
             )
@@ -171,7 +171,10 @@ class Ui_AnswerWindow(object):
                 _translate("MainWindow", f"{data[self.current_question][9]}")
             )
         else:
-            self.pushButton.setText(_translate("MainWindow", ""))
+            self.label_7.setText('')
+            self.label_8.setText('End.')
+            self.label_5.setText('')
+            self.pushButton.hide()
 
 
 if __name__ == "__main__":

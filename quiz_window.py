@@ -15,7 +15,7 @@ from results_window import Ui_Result
 
 class Ui_quiz(object):
 
-    def __init__(self,User_Id=1):
+    def __init__(self,User_Id):
         self.newObj = QuessionAnswer()
         self.User_Id = User_Id
         self.data = self.newObj.quiz()
@@ -111,6 +111,9 @@ class Ui_quiz(object):
         self.radioButton_4 = QtWidgets.QRadioButton(self.frame_2)
         self.radioButton_4.setGeometry(QtCore.QRect(80, 220, 500, 20))
         self.radioButton_4.setObjectName("radioButton_4")
+        self.radioButton_5 = QtWidgets.QRadioButton(self.frame_2)
+        self.radioButton_5.setGeometry(QtCore.QRect(80, 240, 500, 20))
+        self.radioButton_5.setObjectName("radioButton_5")
         self.horizontalLayout.addWidget(self.frame_2)
         self.gridLayout.addWidget(self.widget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -138,28 +141,33 @@ class Ui_quiz(object):
 
 # ........................
         def clicked():
-            self.current_question = self.current_question+1
-            # print(f"..quize...{self.current_question}")
-
-            # print(self.answer)
-            self.GivenAnswers.append(self.answer)
-            self.retranslateUi(MainWindow, self.data)
-
+            if self.answer!='':
+                print(self.answer)
+                self.current_question = self.current_question+1
+                self.GivenAnswers.append(self.answer)
+                self.retranslateUi(MainWindow, self.data)
+            else:
+                print('please select a answer')
         self.pushButton.clicked.connect(clicked)
         # .............
 
     # open new window
     def Open_ResultWindow(self):
-
-        self.newObj.InsertMaks(self.GivenAnswers,self.User_Id)
-        print(self.User_Id)
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_Result(self.User_Id)
-        self.ui.setupUi(self.window)
-        # MainWindow.hide()
-        self.window.show()
-
+        try:
+            self.newObj.InsertMaks(self.GivenAnswers,self.User_Id)
+            print(self.User_Id)
+            self.window = QtWidgets.QMainWindow()
+            self.ui = Ui_Result(self.User_Id)
+            self.ui.setupUi(self.window)
+            # MainWindow.hide()
+            self.window.show()
+        except Exception as e:
+            print(f'Sorry, Cannot proceed: {str(e)}')
     def retranslateUi(self, MainWindow, data):
+        self.radioButton_1.setChecked(False)
+        self.radioButton_2.setChecked(False)
+        self.radioButton_3.setChecked(False)
+        self.radioButton_4.setChecked(False)
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_4.setText(_translate(
@@ -176,10 +184,7 @@ class Ui_quiz(object):
 
         if len(Quizlist) > 0:
             self.answer = ''
-            self.radioButton_1.setChecked(0)
-            self.radioButton_2.setChecked(False)
-            self.radioButton_3.setChecked(0)
-            self.radioButton_4.setChecked(0)
+            self.radioButton_5.setChecked(True)
             # ....................
             self.label_7.setText(_translate(
                 "MainWindow", f"Q{Quizlist[0][2]}."))
@@ -200,6 +205,9 @@ class Ui_quiz(object):
                 "MainWindow", f"{Quizlist[3][6]}"))
             self.radioButton_4.toggled.connect(
                 lambda: self.radio_button_selected(Quizlist[3][5]))
+            self.radioButton_5.hide()
+            self.radioButton_5.toggled.connect(
+                lambda: self.radio_button_selected(''))
         else:
             self.label_7.hide()
             self.label_8.setText(_translate("MainWindow", " You Have successfully complted. Please submit"))

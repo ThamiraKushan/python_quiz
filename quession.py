@@ -19,79 +19,91 @@ class QuessionAnswer(object):
         # print(result[0])
         self.LatestPaper= result[0]
 
-    def Insert_Data(self):
+    def Insert_Data(self,filepath):
         print("a")
-
-        workbook_file = open(
-            r"C:\Users\Shyamal\Desktop\msc it\4.1 Advanced Programming\Untitled Folder\upload.csv",
-            "r",
-        )
+        file_Path = filepath
+        workbook_file = open(file_Path,"r")
         workbook_reader = csv.reader(workbook_file)
         paper = []
         quession = []
         Answer = []
         current_quession = ""
-
+      
         # create a cursor object
         cursor = db_connection.cursor()
+        try:
+            for i, row in enumerate(workbook_reader):
+                if i < 1:
 
-        for i, row in enumerate(workbook_reader):
-            if i < 1:
+                    # execute an INSERT statement
+                    sql1 = "INSERT INTO paper (Paper_No, Subject_Name) VALUES (%s, %s)"
+                    values = (row[1], row[3])
+                    cursor.execute(sql1, values)
 
-                # execute an INSERT statement
-                sql1 = "INSERT INTO paper (Paper_No, Subject_Id) VALUES (%s, %s)"
-                values = (row[1], row[3])
-                cursor.execute(sql1, values)
+                    # get the last inserted id
+                    last_insert_id = cursor.lastrowid
+                elif 1 < i:
+                    if current_quession != row[0]:
 
-                # get the last inserted id
-                last_insert_id = cursor.lastrowid
-            elif 1 < i:
-                if current_quession != row[0]:
+                        sql2 = "INSERT INTO queion (PaperTable_Id, Q_No,Quession) VALUES (%s, %s,%s)"
+                        values = (last_insert_id, row[0], row[1])
+                        cursor.execute(sql2, values)
 
-                    sql2 = "INSERT INTO queion (PaperTable_Id, Q_No,Quession) VALUES (%s, %s,%s)"
-                    values = (last_insert_id, row[0], row[1])
-                    cursor.execute(sql2, values)
+                        last_Quession_id = cursor.lastrowid
 
-                    last_Quession_id = cursor.lastrowid
+                        current_quession = row[0]
+                    #       ass Insert Answer data
+                    sql3 = "INSERT INTO answer(QsTable_id_n,Answer_No,Answer,Is_Correct) VALUES(%s, %s,%s,%s)"
 
-                    current_quession = row[0]
-                #       ass Insert Answer data
-                sql3 = "INSERT INTO answer(QsTable_id_n,Answer_No,Answer,Is_Correct) VALUES(%s, %s,%s,%s)"
-
-                values = (last_Quession_id, row[2], row[3], row[4])
-                cursor.execute(sql3, values)
-
+                    values = (last_Quession_id, row[2], row[3], row[4])
+                    cursor.execute(sql3, values)
+            # commit the transaction
+            db_connection.commit()
+            # return a success message
+            return "Data inserted successfully."        
+        except Exception as e:
+            # rollback the changes if there was an error
+            db_connection.rollback()
+            
+            # return a reject message with the error information
+            return f"Error inserting data: {str(e)}"
+        
         workbook_file.close()
-
-        # commit the transaction
-        db_connection.commit()
-
+        print("as")
         # close the cursor and database connection
         cursor.close()
-        # db_connection.close()
+
 
     def InsertMaks(self,Maks,UserID):
 
         print("im in insertmask\\")
         print(Maks)
         print(UserID)
-        for i,item in enumerate(self.ViewCorrectAnswer()):
-            if item[8] == Maks[i]:
-                self.correct_ += 1
-            else:
-                self.incorrect_ +=1 
-        
+        try:
+            for i,item in enumerate(self.ViewCorrectAnswer()):
+                if item[8] == Maks[i]:
+                    self.correct_ += 1
+                else:
+                    self.incorrect_ +=1 
+            
 
-        sql1 = "INSERT INTO marks (Student_id, Paper_id_n,Correct_Answers,Wrong_Answers) VALUES (%s, %s, %s, %s)"
-        values = (UserID, self.LatestPaper,self.correct_,self.incorrect_)
-        print(values)
-        self.cursor.execute(sql1, values)
+            sql1 = "INSERT INTO marks (Student_id, Paper_id_n,Correct_Answers,Wrong_Answers) VALUES (%s, %s, %s, %s)"
+            values = (UserID, self.LatestPaper,self.correct_,self.incorrect_)
+            print(values)
+            self.cursor.execute(sql1, values)
 
-        self.db_connection.commit()
+            self.db_connection.commit()
 
-        # close the cursor and database connection
-        self.cursor.close()
-        # self.db_connection.close()
+            # close the cursor and database connection
+            self.cursor.close()
+            return "Data inserted successfully."        
+        except Exception as e:
+            # rollback the changes if there was an error
+            db_connection.rollback()
+            
+            # return a reject message with the error information
+            return f"Error inserting data: {str(e)}"
+            # self.db_connection.close()
 
       
         
