@@ -27,6 +27,7 @@ class Quiz_bl(object):
         return self.Obj1.quiz(Paper_Id)
     
     def ViewStudentsMarks(self,Paper_Id):
+        print('in side BL :',self.user_id)
         return self.Obj1.ViewStudentsMarks(self.user_id,Paper_Id)
     
     def ViewCorrectAnswer(self,Paper_Id):

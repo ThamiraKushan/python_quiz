@@ -17,7 +17,7 @@ from answer_window import Ui_AnswerWindow
 class Ui_Result(object):
 
     def __init__(self,User_Id,Paper_Id):
-       
+        print('inside results : ',User_Id)
         self.ObjBl = Quiz_bl(User_Id)
         self.User_Id = User_Id
         self.Paper_Id = Paper_Id
@@ -176,7 +176,7 @@ class Ui_Result(object):
     def Open_AnswerWindow(self):
 
         self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_AnswerWindow(1,1)
+        self.ui = Ui_AnswerWindow(self.User_Id,self.Paper_Id)
         self.ui.setupUi(self.window)
         # MainWindow.hide()
         self.window.show()
@@ -192,7 +192,7 @@ class Ui_Result(object):
         # try:
         StudentMrks=StudentMrks[0]
         print(StudentMrks)
-        MyMarks=StudentMrks[3]/(StudentMrks[3]+StudentMrks[4])*100
+        MyMarks=int(StudentMrks[3]/(StudentMrks[3]+StudentMrks[4]))*100
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_4.setText(_translate("MainWindow", "Results"))

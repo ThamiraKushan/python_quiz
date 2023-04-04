@@ -16,7 +16,7 @@ from quiz_window import Ui_quiz
 
 class Ui_Dashboard(object):
 
-    def __init__(self,User_Id=1):
+    def __init__(self,User_Id):
         self.PaperList=[]
         self.newObj = Quiz_bl(User_Id)
         self.User_Id = User_Id
@@ -139,6 +139,7 @@ class Ui_Dashboard(object):
             # MainWindow2.close()
             print(papertbID)
             if(self.newObj.IsComplted(papertbID)):
+                # self.newObj.IsComplted(papertbID)
                 print('You Have alredy Submit answer')
             else:
                 print('hi ',papertbID)

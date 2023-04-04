@@ -131,9 +131,9 @@ class QuessionAnswer(object):
         # sql = "select * from queion"
 
         # Define the SQL query
+        print(StudentID)
         query = f"select * from marks where Student_id={StudentID} AND Paper_id_n ={Paper_Id}"
-        # cursor = db_connection.cursor()
-        # Execute the query
+        print(query)
         self.cursor.execute(query)
 
         # Fetch the results

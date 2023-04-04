@@ -20,7 +20,7 @@ class Ui_AnswerWindow(object):
         # self.ObjQuiz = QuessionAnswer()
         self.ObjBl = Quiz_bl(User_Id)
         self.Paper_Id = Paper_Id
-        self.data = self.ObjBl.ViewCorrectAnswer()
+        self.data = self.ObjBl.ViewCorrectAnswer(self.Paper_Id)
 
     def setupUi(self, MainWindow):
 

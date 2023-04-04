@@ -20,6 +20,7 @@ class Ui_quiz(object):
         # self.newObj = QuessionAnswer()
         self.newObj = Quiz_bl(User_Id)
         self.paperID = Paper_Id
+        self.User_id = User_Id
         self.data = self.newObj.ViewQuiz(Paper_Id)
         # print(self.data)
         self.current_question = 1
@@ -160,11 +161,12 @@ class Ui_quiz(object):
             # MainWindow2.close()
 
             if(self.newObj.IsComplted(self.paperID)):
+                # self.newObj.IsComplted(self.paperID)
                 print('You Have alredy Submit answer')
             else:
                 self.newObj.InsertMaks(self.GivenAnswers,self.paperID)  
                 self.window = QtWidgets.QMainWindow()
-                self.ui = Ui_Result(self.paperID,self.paperID)
+                self.ui = Ui_Result(self.User_id,self.paperID)
                 self.ui.setupUi(self.window)
                 self.window.show()
         # except Exception as e:
