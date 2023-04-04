@@ -15,6 +15,7 @@ from connection import db_connection
 from dashboard import Ui_Dashboard
 from file_upload import File_upload_Window
 from sign_up import signup_form
+from error import error_box
 
 
 class Ui_form(object):
@@ -230,8 +231,21 @@ class Ui_form(object):
         MainWindow.hide()
         self.window.show()
 
+    # def error(self):
+    #     self.window = QtWidgets.QMainWindow()
+    #     self.ui = error_box()
+    #     self.ui.setupUi(self.window)
+    #     self.window.show()
+
+    def error(self,error_msg):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = error_box()
+        self.ui.setupUi(self.window)
+        self.ui.set_text(error_msg)
+        self.window.show()
+
     # def openWindow(self,User_Id):
-    def openQuiz(self,User_Id):
+    def openQuiz(self, User_Id):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Dashboard(User_Id)
         self.ui.setupUi(self.window)
@@ -263,21 +277,25 @@ class Ui_form(object):
         sql = "SELECT user_role,email,id FROM user WHERE user_id = %s AND password = %s;"
         cursor.execute(sql, (user_id, hash_password))
         result = cursor.fetchone()
-        print(result["id"])
-        if result["id"]:
-            print(result["user_role"])
+        print(result)
+        if result != None:
+            if result["id"]:
+                print(result["user_role"])
 
-        if result != [] or result != None:
-            if result["user_role"] == "admin":
-                print("admin")
-                self.openFileUpload()
+            if result != [] or result != None:
+                if result["user_role"] == "admin":
+                    print("admin")
+                    self.openFileUpload()
+                else:
+                    print("student")
+                    self.openQuiz(result["id"])
+
             else:
-                print("student")
-
-                self.openQuiz(result["id"])
-
+                print("failed")
+                self.error("Something went wrong! Please try again.")
         else:
             print("failed")
+            self.error("Please enter valid credentials again.")
 
 
 if __name__ == "__main__":
