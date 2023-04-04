@@ -4,14 +4,14 @@ import os
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog,QWidget,QTableWidget, QTableWidgetItem
-from quession import QuessionAnswer
+from Data_storage import QuessionAnswer
 
 
 class File_upload_Window(object):
 
     def __init__(self):
         self.filepath=''
-        self.ObjQuiz = QuessionAnswer()
+        self.ObjQuiz = QuessionAnswer(1)
     
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")

@@ -9,16 +9,18 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from quession import QuessionAnswer
-
+from Data_storage import QuessionAnswer
+from Bussiness_Logic import Quiz_bl
 
 class Ui_AnswerWindow(object):
 
     current_question = 0
 
-    def __init__(self):
-        self.ObjQuiz = QuessionAnswer()
-        self.data = self.ObjQuiz.ViewCorrectAnswer()
+    def __init__(self,User_Id,Paper_Id):
+        # self.ObjQuiz = QuessionAnswer()
+        self.ObjBl = Quiz_bl(User_Id)
+        self.Paper_Id = Paper_Id
+        self.data = self.ObjBl.ViewCorrectAnswer()
 
     def setupUi(self, MainWindow):
 
@@ -134,7 +136,7 @@ class Ui_AnswerWindow(object):
         def clicked():
             self.current_question = self.current_question + 1
             print(f"Quiz.....{self.current_question}")
-            self.retranslateUi(MainWindow, self.data)
+            self.retranslateUi(MainWindow, self.ObjBl.ViewCorrectAnswer(self.Paper_Id))
 
         self.pushButton.clicked.connect(clicked)
 

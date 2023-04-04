@@ -12,7 +12,7 @@ from hashlib import md5
 import hashlib
 from PyQt5 import QtCore, QtGui, QtWidgets
 from connection import db_connection
-from quiz_window import Ui_quiz
+from dashboard import Ui_Dashboard
 from file_upload import File_upload_Window
 from sign_up import signup_form
 
@@ -233,7 +233,7 @@ class Ui_form(object):
     # def openWindow(self,User_Id):
     def openQuiz(self,User_Id):
         self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_quiz(User_Id)
+        self.ui = Ui_Dashboard(User_Id)
         self.ui.setupUi(self.window)
         MainWindow.hide()
         self.window.show()
@@ -263,8 +263,8 @@ class Ui_form(object):
         sql = "SELECT user_role,email,id FROM user WHERE user_id = %s AND password = %s;"
         cursor.execute(sql, (user_id, hash_password))
         result = cursor.fetchone()
-        print(result)
-        if result:
+        print(result["id"])
+        if result["id"]:
             print(result["user_role"])
 
         if result != [] or result != None:

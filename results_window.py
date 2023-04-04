@@ -9,17 +9,20 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from quession import QuessionAnswer
+from Data_storage import QuessionAnswer
+from Bussiness_Logic import Quiz_bl
 from answer_window import Ui_AnswerWindow
 
 
 class Ui_Result(object):
 
-    def __init__(self,User_Id=1):
+    def __init__(self,User_Id,Paper_Id):
        
+        self.ObjBl = Quiz_bl(User_Id)
         self.User_Id = User_Id
-        self.ObjQuiz = QuessionAnswer()
-        self.CorectAnswer = self.ObjQuiz.ViewCorrectAnswer()
+        self.Paper_Id = Paper_Id
+        # self.ObjQuiz = QuessionAnswer()
+        # self.CorectAnswer = self.ObjQuiz.ViewCorrectAnswer()
 
         
 
@@ -173,7 +176,7 @@ class Ui_Result(object):
     def Open_AnswerWindow(self):
 
         self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_AnswerWindow()
+        self.ui = Ui_AnswerWindow(1,1)
         self.ui.setupUi(self.window)
         # MainWindow.hide()
         self.window.show()
@@ -184,7 +187,9 @@ class Ui_Result(object):
 
     def retranslateUi(self, MainWindow):
 
-        StudentMrks = self.ObjQuiz.ViewStudentsMarks(self.User_Id)
+        StudentMrks = self.ObjBl.ViewStudentsMarks(self.Paper_Id)
+        print(StudentMrks)
+        # try:
         StudentMrks=StudentMrks[0]
         print(StudentMrks)
         MyMarks=StudentMrks[3]/(StudentMrks[3]+StudentMrks[4])*100
@@ -195,7 +200,7 @@ class Ui_Result(object):
         self.label.setText(_translate("MainWindow", "QuizMaster - MIT "))
         self.label_8.setText(_translate("MainWindow", "Your score :"))
         self.label_9.setText(_translate("MainWindow", f"{MyMarks} %"))
-     
+    
         self.label_11.setText(_translate("MainWindow", "Correct answers :"))
         self.label_10.setText(_translate("MainWindow", f"{StudentMrks[3]}"))
         self.label_13.setText(_translate("MainWindow", "Wrong answers : "))
@@ -204,7 +209,8 @@ class Ui_Result(object):
 
         self.pushButton.setText(_translate("MainWindow", "Answers"))
         self.pushButton.clicked.connect(self.Open_AnswerWindow)
-
+        # except Exception as e:
+        #     print(f'Sorry, Cannot proceed in result : {str(e)}')
 
 if __name__ == "__main__":
     import sys

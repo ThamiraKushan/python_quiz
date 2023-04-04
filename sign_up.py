@@ -11,6 +11,7 @@
 import hashlib
 from PyQt5 import QtCore, QtGui, QtWidgets
 from connection import db_connection
+from dashboard import Ui_Dashboard
 from quiz_window import Ui_quiz
 
 cursor = db_connection.cursor(dictionary=True)
@@ -208,14 +209,14 @@ class signup_form(object):
 
     def openQuiz(self):
         self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_quiz()
+        self.ui = Ui_Dashboard(self.user_id)
         self.ui.setupUi(self.window)
         MainWindow.hide()
         self.window.show()
 
     def reg_user(self):
         id = ""
-        user_id = self.lineEdit.text()
+        self.user_id = self.lineEdit.text()
         email = self.lineEdit_2.text()
         password = self.lineEdit_3.text()
         con_password = self.lineEdit_4.text()
@@ -235,7 +236,7 @@ class signup_form(object):
 
         if hash_password == hash_password_con:
             sql = "SELECT user_id FROM user WHERE user_id = %s;"
-            cursor.execute(sql, (user_id,))
+            cursor.execute(sql, (self.user_id,))
             result = cursor.fetchall()
             # print('++++++++++++++++++', result)
             # check if the result is not None (i.e., if user ID exists in the table)
@@ -243,7 +244,7 @@ class signup_form(object):
                 user_exists = False
                 print(user_exists)
                 sql = "INSERT INTO user (id, user_id, password, email, status, user_role) VALUES (%s,%s,%s,%s,%s,%s)"
-                values = (None, user_id, hash_password,
+                values = (None, self.user_id, hash_password,
                           email, status, user_role)
                 cursor.execute(sql, values)
                 db_connection.commit()

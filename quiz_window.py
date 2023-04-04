@@ -9,16 +9,19 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from quession import QuessionAnswer
+from Data_storage import QuessionAnswer
+from Bussiness_Logic import Quiz_bl
 from results_window import Ui_Result
 
 
 class Ui_quiz(object):
 
-    def __init__(self,User_Id):
-        self.newObj = QuessionAnswer()
-        self.User_Id = User_Id
-        self.data = self.newObj.quiz()
+    def __init__(self,Paper_Id,User_Id):
+        # self.newObj = QuessionAnswer()
+        self.newObj = Quiz_bl(User_Id)
+        self.paperID = Paper_Id
+        self.data = self.newObj.ViewQuiz(Paper_Id)
+        # print(self.data)
         self.current_question = 1
         self.checkPoint = 1
         self.GivenAnswers = []
@@ -142,7 +145,7 @@ class Ui_quiz(object):
 # ........................
         def clicked():
             if self.answer!='':
-                print(self.answer)
+                # print(self.answer)
                 self.current_question = self.current_question+1
                 self.GivenAnswers.append(self.answer)
                 self.retranslateUi(MainWindow, self.data)
@@ -153,16 +156,20 @@ class Ui_quiz(object):
 
     # open new window
     def Open_ResultWindow(self):
-        try:
-            self.newObj.InsertMaks(self.GivenAnswers,self.User_Id)
-            print(self.User_Id)
-            self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_Result(self.User_Id)
-            self.ui.setupUi(self.window)
-            # MainWindow.hide()
-            self.window.show()
-        except Exception as e:
-            print(f'Sorry, Cannot proceed: {str(e)}')
+        # try:
+            # MainWindow2.close()
+
+            if(self.newObj.IsComplted(self.paperID)):
+                print('You Have alredy Submit answer')
+            else:
+                self.newObj.InsertMaks(self.GivenAnswers,self.paperID)  
+                self.window = QtWidgets.QMainWindow()
+                self.ui = Ui_Result(self.paperID,self.paperID)
+                self.ui.setupUi(self.window)
+                self.window.show()
+        # except Exception as e:
+        #     print(f'Sorry, Cannot proceed: {str(e)}')
+
     def retranslateUi(self, MainWindow, data):
         self.radioButton_1.setChecked(False)
         self.radioButton_2.setChecked(False)
@@ -210,7 +217,7 @@ class Ui_quiz(object):
                 lambda: self.radio_button_selected(''))
         else:
             self.label_7.hide()
-            self.label_8.setText(_translate("MainWindow", " You Have successfully complted. Please submit"))
+            self.label_8.setText(_translate("MainWindow", "Please submit your answers"))
             self.label_8.setMinimumSize(self.label_8.sizeHint())
             self.label_4.hide()
             self.radioButton_1.hide()
@@ -231,8 +238,8 @@ if __name__ == "__main__":
     import sys
 
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
+    MainWindow2 = QtWidgets.QMainWindow()
     ui = Ui_quiz()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    ui.setupUi(MainWindow2)
+    MainWindow2.show()
     sys.exit(app.exec_())
