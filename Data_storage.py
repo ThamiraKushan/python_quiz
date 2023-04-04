@@ -4,7 +4,7 @@ import csv
 
 class QuessionAnswer(object):
 
-    def __init__(self,User_ID):
+    def __init__(self, User_ID):
 
         self.User_ID = User_ID
         self.db_connection = db_connection
@@ -16,19 +16,19 @@ class QuessionAnswer(object):
         # for item in result:
         #     self.LatestPaper = item[0]
         # print(result[0])
-        self.LatestPaper= result[0]
+        self.LatestPaper = result[0]
         # print(self.User_ID)
 
-    def Insert_Data(self,filepath):
+    def Insert_Data(self, filepath):
         print("a")
         file_Path = filepath
-        workbook_file = open(file_Path,"r")
+        workbook_file = open(file_Path, "r")
         workbook_reader = csv.reader(workbook_file)
         paper = []
         quession = []
         Answer = []
         current_quession = ""
-      
+
         # create a cursor object
         cursor = db_connection.cursor()
         try:
@@ -60,28 +60,27 @@ class QuessionAnswer(object):
             # commit the transaction
             db_connection.commit()
             # return a success message
-            return "Data inserted successfully."        
+            return "Data inserted successfully."
         except Exception as e:
             # rollback the changes if there was an error
             db_connection.rollback()
-            
+
             # return a reject message with the error information
             return f"Error inserting data: {str(e)}"
-        
+
         workbook_file.close()
         print("as")
         # close the cursor and database connection
         cursor.close()
 
-
-    def InsertMaks(self,correct_,incorrect_,Paper_Id):
+    def InsertMaks(self, correct_, incorrect_, Paper_Id):
 
         print("im in insertmask\\")
-        
+
         try:
-        
+
             sql1 = "INSERT INTO marks (Student_id, Paper_id_n,Correct_Answers,Wrong_Answers) VALUES (%s, %s, %s, %s)"
-            values = (self.User_ID, Paper_Id,correct_,incorrect_)
+            values = (self.User_ID, Paper_Id, correct_, incorrect_)
             # print(values)
             self.cursor.execute(sql1, values)
 
@@ -89,25 +88,22 @@ class QuessionAnswer(object):
 
             # close the cursor and database connection
             self.cursor.close()
-            return "Data inserted successfully."        
+            return "Data inserted successfully."
         except Exception as e:
             # rollback the changes if there was an error
             db_connection.rollback()
-            
+
             # return a reject message with the error information
             return f"Error inserting data: {str(e)}"
             # self.db_connection.close()
 
-      
-        
-
-    def ViewCorrectAnswer(self,Paper_Id):
+    def ViewCorrectAnswer(self, Paper_Id):
 
         # Define the SQL query
         query = f"select * from queion q \
                 INNER JOIN answer ans on q.QsTable_id_n = ans.QsTable_id_n \
                 WHERE ans.Is_Correct=1 and q.PaperTable_Id = {Paper_Id} "
-        
+
         print(query)
         cursor = db_connection.cursor()
         # Execute the query
@@ -118,16 +114,16 @@ class QuessionAnswer(object):
 
         # Process the results
         # for row in results:
-            # Do something with each row of data
-            # print(row)
+        # Do something with each row of data
+        # print(row)
 
         # Close the cursor and connection
         # cursor.close()
         # db_connection.close()
 
         return results
-    
-    def ViewStudentsMarks(self,StudentID,Paper_Id):
+
+    def ViewStudentsMarks(self, StudentID, Paper_Id):
         # sql = "select * from queion"
 
         # Define the SQL query
@@ -150,7 +146,7 @@ class QuessionAnswer(object):
 
         return results
 
-    def quiz(self,Paper_Id):
+    def quiz(self, Paper_Id):
         # Define the SQL query
         query = f"select q.QsTable_id_n,q.PaperTable_Id,q.Q_No,q.Quession,ans.Answer_Id,ans.Answer_No,Answer,Is_Correct\
                 from queion q \
@@ -167,7 +163,6 @@ class QuessionAnswer(object):
         # db_connection.close()
 
         return results
-    
 
     def ActivePaper(self):
         # Define the SQL query
@@ -183,11 +178,11 @@ class QuessionAnswer(object):
         # db_connection.close()
 
         return results
-    
-    def IsComplted(self,Paper_Id):
+
+    def IsComplted(self, Paper_Id):
        # Define the SQL query
         query = f"SELECT CASE WHEN EXISTS (SELECT * FROM marks where Student_id={self.User_ID} and Paper_id_n={Paper_Id}) THEN 1 ELSE 0 END AS hasRecords"
-        
+
         cursor = db_connection.cursor(dictionary=True)
 
         # Execute the query

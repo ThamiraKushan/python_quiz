@@ -12,11 +12,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from Data_storage import QuessionAnswer
 from Bussiness_Logic import Quiz_bl
 
+
 class Ui_AnswerWindow(object):
 
     current_question = 0
 
-    def __init__(self,User_Id,Paper_Id):
+    def __init__(self, User_Id, Paper_Id):
         # self.ObjQuiz = QuessionAnswer()
         self.ObjBl = Quiz_bl(User_Id)
         self.Paper_Id = Paper_Id
@@ -121,8 +122,8 @@ class Ui_AnswerWindow(object):
         self.label_4.setWordWrap(True)
         self.label_5.setWordWrap(True)
         self.label_7.setWordWrap(True)
-        self.label_8.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        
+        self.label_8.setSizePolicy(
+            QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
 
         self.retranslateUi(MainWindow, self.data)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -136,7 +137,8 @@ class Ui_AnswerWindow(object):
         def clicked():
             self.current_question = self.current_question + 1
             print(f"Quiz.....{self.current_question}")
-            self.retranslateUi(MainWindow, self.ObjBl.ViewCorrectAnswer(self.Paper_Id))
+            self.retranslateUi(
+                MainWindow, self.ObjBl.ViewCorrectAnswer(self.Paper_Id))
 
         self.pushButton.clicked.connect(clicked)
 

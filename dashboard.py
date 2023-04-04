@@ -14,13 +14,13 @@ from results_window import Ui_Result
 from Bussiness_Logic import Quiz_bl
 from quiz_window import Ui_quiz
 
+
 class Ui_Dashboard(object):
 
     def __init__(self,User_Id):
         self.PaperList=[]
         self.newObj = Quiz_bl(User_Id)
         self.User_Id = User_Id
-        
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -49,17 +49,14 @@ class Ui_Dashboard(object):
         self.label_4.setFont(font)
         self.label_4.setStyleSheet("color:rgb(81, 79, 116)")
         self.label_4.setObjectName("label_4")
-        
-        
-        
 
         # .......................
-        
+
         # ..........................
-        
+
         font = QtGui.QFont()
         font.setPointSize(14)
-        
+
         self.label = QtWidgets.QLabel(self.frame_2)
         self.label.setGeometry(QtCore.QRect(0, 0, 981, 45))
         font = QtGui.QFont()
@@ -71,10 +68,10 @@ class Ui_Dashboard(object):
         )
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
-       
+
         font = QtGui.QFont()
         font.setPointSize(14)
-        
+
         self.horizontalLayout.addWidget(self.frame_2)
         self.gridLayout.addWidget(self.widget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -102,7 +99,7 @@ class Ui_Dashboard(object):
             self.PaperList.append(btn)
         # ........................
 
-        for i,btn in enumerate(self.PaperList):
+        for i, btn in enumerate(self.PaperList):
             self.btn = QtWidgets.QPushButton(self.frame_2)
             self.btn.setStyleSheet(
                 "#btn{\n"
@@ -124,17 +121,17 @@ class Ui_Dashboard(object):
             )
             self.btn.setObjectName("btn")
             # self.btn.setText(self._translate("MainWindow", "Submit"))
-            self.a=btn*510
+            self.a = btn*510
             x = (2*i+1)*150
             y = 100
             width = 200
             height = 100
-            self.btn.setGeometry(QtCore.QRect(x,y,width,height))
+            self.btn.setGeometry(QtCore.QRect(x, y, width, height))
             self.btn.setText(self._translate(f"MainWindow", str(data[i][2])))
             self.btn.clicked.connect(lambda _, i=i: self.Open_Quiz(data[i][0]))
 
         # .............................
-    def Open_Quiz(self,papertbID):
+    def Open_Quiz(self, papertbID):
         try:
             # MainWindow2.close()
             print(papertbID)
@@ -142,34 +139,25 @@ class Ui_Dashboard(object):
                 # self.newObj.IsComplted(papertbID)
                 print('You Have alredy Submit answer')
             else:
-                print('hi ',papertbID)
+                print('hi ', papertbID)
                 self.window = QtWidgets.QMainWindow()
-                self.ui = Ui_quiz(papertbID,self.User_Id)
+                self.ui = Ui_quiz(papertbID, self.User_Id)
                 self.ui.setupUi(self.window)
                 # MainWindow.hide()
                 self.window.show()
         except Exception as e:
             print(f'Sorry, Cannot proceed: {str(e)}')
 
-        
-
     def retranslateUi(self, MainWindow):
-        
+
         self._translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(self._translate("MainWindow", "MainWindow"))
-        
-       
+
         self.label.setText(self._translate("MainWindow", "QuizMaster - MIT "))
 
-       
-   
-        
         self.GenerateButton()
 
         # print(self.PaperList)
-        
-
-    
 
 
 if __name__ == "__main__":

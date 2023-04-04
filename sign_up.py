@@ -13,6 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from connection import db_connection
 from dashboard import Ui_Dashboard
 from quiz_window import Ui_quiz
+from error import error_box
 
 cursor = db_connection.cursor(dictionary=True)
 
@@ -214,6 +215,14 @@ class signup_form(object):
         MainWindow.hide()
         self.window.show()
 
+    def error(self,error_msg):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = error_box()
+        self.ui.setupUi(self.window)
+        self.ui.set_text(error_msg)
+        self.window.show()
+
+
     def reg_user(self):
         id = ""
         self.user_id = self.lineEdit.text()
@@ -252,9 +261,11 @@ class signup_form(object):
             else:
                 user_exists = True
                 print(user_exists)
+                self.error("You've already registered with these credentials")
 
         else:
             print("password error")
+            self.error("Oops! The passwords you entered don't match. Please check and try again.")
 
 
 if __name__ == "__main__":
