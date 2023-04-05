@@ -154,7 +154,7 @@ class Ui_Dashboard(object):
 
         # .............................
     def Open_Quiz(self, papertbID):
-        try:
+        # try:
             # MainWindow2.close()
             print(papertbID)
             if(self.newObj.IsComplted(papertbID)):
@@ -169,9 +169,9 @@ class Ui_Dashboard(object):
                 self.ui.setupUi(self.window,self)
                 # MainWindow.hide()
                 self.window.show()
-        except Exception as e:
-            print(f'Sorry, Cannot proceed: {str(e)}')
-            self.error(f'Sorry, Cannot proceed: {str(e)}')
+        # except Exception as e:
+        #     print(f'Sorry, Cannot proceed: {str(e)}')
+        #     self.error(f'Sorry, Cannot proceed: {str(e)}')
 
     def retranslateUi(self, MainWindow):
 

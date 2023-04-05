@@ -250,7 +250,7 @@ class Ui_form(object):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Dashboard(User_Id,Name,UserRole)
         self.ui.setupUi(self.window)
-        MainWindow.hide()
+        # MainWindow.hide()
         self.window.show()
 
     def openFileUpload(self):

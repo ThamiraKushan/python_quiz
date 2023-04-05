@@ -212,7 +212,7 @@ class signup_form(object):
 
     def openQuiz(self):
         self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_Dashboard(self.user_id)
+        self.ui = Ui_Dashboard(self.user_id,'','')
         self.ui.setupUi(self.window)
         # new change
         self.loginUI.window.hide()
