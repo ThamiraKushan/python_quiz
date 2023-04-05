@@ -66,7 +66,8 @@ class QuessionAnswer(object):
             db_connection.rollback()
 
             # return a reject message with the error information
-            return f"Error inserting data: {str(e)}"
+            # return f"Error inserting data: {str(e)}"
+            return f"Incorrect file format! Please select a correctly formatted file."
 
         workbook_file.close()
         print("as")
@@ -94,7 +95,8 @@ class QuessionAnswer(object):
             db_connection.rollback()
 
             # return a reject message with the error information
-            return f"Error inserting data: {str(e)}"
+            # return f"Error inserting data: {str(e)}"
+            return f"Incorrect file format! Please select a correctly formatted file."
             # self.db_connection.close()
 
     def ViewCorrectAnswer(self, Paper_Id):

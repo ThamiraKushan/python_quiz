@@ -183,7 +183,9 @@ class File_upload_Window(object):
             #    self.label3.setText(self._translate("MainWindow", "Loading...."))
             #
             message = self.ObjQuiz.Insert_Data(self.filepath)
-            print(message)
+            print( message)
+            # self.error("Incorrect file format! Please select a correctly formatted file.")
+            self.error(message)
 
             #    self.label3.setText(self._translate("MainWindow", "Successfully uploaded "))
         else:
