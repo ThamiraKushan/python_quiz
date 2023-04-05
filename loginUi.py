@@ -10,6 +10,7 @@
 
 from hashlib import md5
 import hashlib
+import os
 from PyQt5 import QtCore, QtGui, QtWidgets
 from connection import db_connection
 from dashboard import Ui_Dashboard
@@ -17,7 +18,7 @@ from file_upload import File_upload_Window
 from sign_up import signup_form
 from error import error_box
 
-
+os.environ['QT_AUTO_SCREEN_SCALE_FACTOR'] = '1'
 class Ui_form(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")

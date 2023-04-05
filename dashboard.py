@@ -29,7 +29,7 @@ class Ui_Dashboard(object):
     def setupUi(self, MainWindow):
         self.MainWindow = MainWindow
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(649, 429)
+        MainWindow.resize(900, 429)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -126,7 +126,6 @@ class Ui_Dashboard(object):
             self.btn.setStyleSheet(
                 "#btn{\n"
                 "padding: 8px 16px;\n"
-                "height: 42px;\n"
                 "background: #1877F2;\n"
                 "border-radius: 8px;\n"
                 "color:white;\n"
@@ -144,9 +143,9 @@ class Ui_Dashboard(object):
             self.btn.setObjectName("btn")
             # self.btn.setText(self._translate("MainWindow", "Submit"))
             self.a = btn*510
-            x = (2*i+1)*150
+            x = (2*i+1)*100
             y = 100
-            width = 200
+            width = 190
             height = 100
             self.btn.setGeometry(QtCore.QRect(x, y, width, height))
             self.btn.setText(self._translate(f"MainWindow", str(data[i][2])))
