@@ -246,9 +246,9 @@ class Ui_form(object):
         self.window.show()
 
     # def openWindow(self,User_Id):
-    def openQuiz(self, User_Id,Name):
+    def openQuiz(self, User_Id,Name,UserRole):
         self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_Dashboard(User_Id,Name)
+        self.ui = Ui_Dashboard(User_Id,Name,UserRole)
         self.ui.setupUi(self.window)
         MainWindow.hide()
         self.window.show()
@@ -286,10 +286,11 @@ class Ui_form(object):
             if result != [] or result != None:
                 if result["user_role"] == "admin":
                     print("admin")
-                    self.openFileUpload()
+                    # self.openFileUpload()
+                    self.openQuiz(result["id"],result["user_name"],result["user_role"])
                 else:
                     print("student")
-                    self.openQuiz(result["id"],result["user_name"])
+                    self.openQuiz(result["id"],result["user_name"],result["user_role"])
 
             else:
                 print("failed")

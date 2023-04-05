@@ -12,6 +12,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from Data_storage import QuessionAnswer
 from Bussiness_Logic import Quiz_bl
 from answer_window import Ui_AnswerWindow
+import os
+os.environ['QT_AUTO_SCREEN_SCALE_FACTOR'] = '1'
 
 
 class Ui_Result(object):
@@ -21,6 +23,7 @@ class Ui_Result(object):
         self.ObjBl = Quiz_bl(User_Id)
         self.User_Id = User_Id
         self.Paper_Id = Paper_Id
+        
         # self.ObjQuiz = QuessionAnswer()
         # self.CorectAnswer = self.ObjQuiz.ViewCorrectAnswer()
 
@@ -218,6 +221,8 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
+    QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True) #enable highdpi scaling
+    QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True) #use highdpi icons
     ui = Ui_Result()
     ui.setupUi(MainWindow)
     MainWindow.show()

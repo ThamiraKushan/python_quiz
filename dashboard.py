@@ -14,17 +14,20 @@ from results_window import Ui_Result
 from Bussiness_Logic import Quiz_bl
 from quiz_window import Ui_quiz
 from error import error_box
+from file_upload import File_upload_Window
 
 
 class Ui_Dashboard(object):
 
-    def __init__(self,User_Id,Name):
+    def __init__(self,User_Id,Name,UserRole):
         self.PaperList=[]
         self.newObj = Quiz_bl(User_Id)
         self.User_Id = User_Id
         self.User_Name = Name
+        self.UserRole = UserRole
 
     def setupUi(self, MainWindow):
+        self.MainWindow = MainWindow
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(649, 429)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -52,9 +55,7 @@ class Ui_Dashboard(object):
         self.label_4.setStyleSheet("color:rgb(81, 79, 116)")
         self.label_4.setObjectName("label_4")
 
-        # .......................
 
-        # ..........................
 
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -94,12 +95,24 @@ class Ui_Dashboard(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+    def UploadWindow(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = File_upload_Window()
+        self.ui.setupUi(self.window)
+        # MainWindow.hide()
+        self.window.show()
+
     def error(self,error_msg):
         self.window = QtWidgets.QMainWindow()
         self.ui = error_box()
         self.ui.setupUi(self.window)
         self.ui.set_text(error_msg)
         self.window.show()
+
+    # def refreshUI(self):
+        # self.update()
+        # self.MainWindow.update()    
+        # self.setupUi(self.window)
 
     def GenerateButton(self):
         data = self.newObj.ActivePaper()
@@ -151,7 +164,7 @@ class Ui_Dashboard(object):
             else:
                 print('hi ', papertbID)
                 self.window = QtWidgets.QMainWindow()
-                self.ui = Ui_quiz(papertbID, self.User_Id)
+                self.ui = Ui_quiz(papertbID, self.User_Id,self.UserRole)
                 # new change
                 self.ui.setupUi(self.window,self)
                 # MainWindow.hide()
@@ -168,6 +181,38 @@ class Ui_Dashboard(object):
         displyName = "Welcome "+self.User_Name
         self.label.setText(self._translate("MainWindow", "QuizMaster - MIT "))
         self.label_4.setText(self._translate("MainWindow", displyName))
+
+        if(self.UserRole=='admin'):
+            # self.pushButton_3 = QtWidgets.QPushButton(self.frame_2)
+            # self.pushButton_3.setGeometry(QtCore.QRect(30, 230, 137, 72))
+                    # ......... add admin button ..............
+            self.pushButton_secondary = QtWidgets.QPushButton(self.frame_2)
+            self.pushButton_secondary.setGeometry(QtCore.QRect(30, 210, 107, 42))
+            self.pushButton_secondary.setStyleSheet(
+                "#pushButton_secondary{\n"
+                "padding: 8px 16px;\n"
+                "height: 42px;\n"
+                "border:1px solid #1877f2;\n"
+                "background: white;\n"
+                "border-radius: 8px;\n"
+                "color:#1877f2;\n"
+                "font-size:14px;\n"
+                "\n"
+                "}\n"
+                "\n"
+                "#pushButton_secondary:hover{\n"
+                "color: white;\n"
+                " background: #1877F2;\n"
+                "border:1px solid #1877f2;\n"
+                "}\n"
+                ""
+            )
+            self.pushButton_secondary.setObjectName("pushButton_secondary")
+            # ..........................
+
+            self.pushButton_secondary.setText(self._translate("MainWindow", "Upload file"))
+            self.pushButton_secondary.clicked.connect(self.UploadWindow)
+            # self.pushButton_3.clicked.connect(self.refreshUI)
 
         self.GenerateButton()
 

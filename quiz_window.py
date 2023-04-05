@@ -17,11 +17,12 @@ from results_window import Ui_Result
 
 class Ui_quiz(object):
 
-    def __init__(self,Paper_Id,User_Id):
+    def __init__(self,Paper_Id,User_Id,UserRole):
         # self.newObj = QuessionAnswer()
         self.newObj = Quiz_bl(User_Id)
         self.paperID = Paper_Id
         self.User_id = User_Id
+        self.UserRole = UserRole
         self.data = self.newObj.ViewQuiz(Paper_Id)
         # print(self.data)
         self.current_question = 1
@@ -149,6 +150,7 @@ class Ui_quiz(object):
 
 # ........................
         def clicked():
+            
             if self.answer!='':
                 # print(self.answer)
                 # sssss
@@ -158,6 +160,7 @@ class Ui_quiz(object):
             else:
                 print('please select a answer')
                 self.error("please select a answer")
+                    
         self.pushButton.clicked.connect(clicked)
         # .............
     def error(self,error_msg):
@@ -234,17 +237,24 @@ class Ui_quiz(object):
                 lambda: self.radio_button_selected(''))
         else:
             self.label_7.hide()
-            self.label_8.setText(_translate("MainWindow", "Please submit your answers"))
             self.label_8.setMinimumSize(self.label_8.sizeHint())
             self.label_4.hide()
             self.radioButton_1.hide()
             self.radioButton_2.hide()
             self.radioButton_3.hide()
             self.radioButton_4.hide()
-            # change the butto name
-   
-            self.pushButton.setText(_translate("MainWindow", "Submit"))
-            self.pushButton.clicked.connect(self.Open_ResultWindow)
+
+            if(self.UserRole!='admin'):
+        
+                self.label_8.setText(_translate("MainWindow", "Please submit your answers")) 
+                # change the butto name   
+                self.pushButton.setText(_translate("MainWindow", "Submit"))
+                self.pushButton.clicked.connect(self.Open_ResultWindow)
+            else:
+                self.pushButton.hide()
+                self.label_8.setText(_translate("MainWindow", "---- End ----")) 
+
+           
 
     def radio_button_selected(self, button):
         self.answer = button
