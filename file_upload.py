@@ -3,16 +3,17 @@
 import os
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog,QWidget,QTableWidget, QTableWidgetItem
+from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog, QWidget, QTableWidget, QTableWidgetItem
 from Data_storage import QuessionAnswer
+from error import error_box
 
 
 class File_upload_Window(object):
 
     def __init__(self):
-        self.filepath=''
+        self.filepath = ''
         self.ObjQuiz = QuessionAnswer(1)
-    
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1180, 522)
@@ -157,51 +158,45 @@ class File_upload_Window(object):
         self.label3.setFont(font)
         self.label3.setStyleSheet("color:yellow;")
         self.label3.setObjectName("label3")
-        
+
         self.label3.setGeometry(QtCore.QRect(70, 240, 651, 91))
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        
-       
-       
-        
-
         self.label.setMinimumSize(self.label.sizeHint())
         self.label_2.setMinimumSize(self.label_2.sizeHint())
         self.label.setWordWrap(True)
         self.label_2.setWordWrap(True)
-        
-      
-       
-       
 
         self.pushButton.clicked.connect(self.browsefiles)
 
-    #     def browsefiles(self):
-    #         directory = os.path.expanduser("~")  # get user's home directory
-    #         fname = QFileDialog.getOpenFileName(self, "Open file", directory)[0]
-    #         self.lineEdit.setText(fname[0])
+    def error(self, error_msg):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = error_box()
+        self.ui.setupUi(self.window)
+        self.ui.set_text(error_msg)
+        self.window.show()
+
     def upload_File(self):
-        if self.filepath !='':
-        #    self.label3.setText(self._translate("MainWindow", "Loading...."))
-        #    
-           message=self.ObjQuiz.Insert_Data(self.filepath)
-           print(message)
-               
-            #    self.label3.setText(self._translate("MainWindow", "Successfully uploaded ")) 
+        if self.filepath != '':
+            #    self.label3.setText(self._translate("MainWindow", "Loading...."))
+            #
+            message = self.ObjQuiz.Insert_Data(self.filepath)
+            print(message)
+
+            #    self.label3.setText(self._translate("MainWindow", "Successfully uploaded "))
         else:
             print('Please open file')
- 
+            self.error("Please select a file")
 
     def browsefiles(self):
         fname = QFileDialog.getOpenFileName(
-        QWidget(), "Open File", '', 'CSV (*.csv)')
+            QWidget(), "Open File", '', 'CSV (*.csv)')
         if fname[0]:
             self.lineEdit.setText(fname[0])
             # print(fname[0])
-            self.filepath=fname[0]
+            self.filepath = fname[0]
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

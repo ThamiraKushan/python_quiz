@@ -11,6 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Data_storage import QuessionAnswer
 from Bussiness_Logic import Quiz_bl
+from error import error_box
 from results_window import Ui_Result
 
 
@@ -143,6 +144,13 @@ class Ui_quiz(object):
         self.retranslateUi(MainWindow, self.data)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+    def error(self,error_msg):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = error_box()
+        self.ui.setupUi(self.window)
+        self.ui.set_text(error_msg)
+        self.window.show()
+
 # ........................
         def clicked():
             if self.answer!='':
@@ -152,6 +160,7 @@ class Ui_quiz(object):
                 self.retranslateUi(MainWindow, self.data)
             else:
                 print('please select a answer')
+                self.error("please select a answer")
         self.pushButton.clicked.connect(clicked)
         # .............
 
@@ -162,7 +171,8 @@ class Ui_quiz(object):
 
             if(self.newObj.IsComplted(self.paperID)):
                 # self.newObj.IsComplted(self.paperID)
-                print('You Have alredy Submit answer')
+                print('You have already submitted an answer.')
+                self.error("You have already submitted an answer.")
             else:
                 self.newObj.InsertMaks(self.GivenAnswers,self.paperID)  
                 self.window = QtWidgets.QMainWindow()

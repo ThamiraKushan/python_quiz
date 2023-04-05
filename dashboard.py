@@ -13,6 +13,7 @@ from Data_storage import QuessionAnswer
 from results_window import Ui_Result
 from Bussiness_Logic import Quiz_bl
 from quiz_window import Ui_quiz
+from error import error_box
 
 
 class Ui_Dashboard(object):
@@ -92,6 +93,13 @@ class Ui_Dashboard(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+    def error(self,error_msg):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = error_box()
+        self.ui.setupUi(self.window)
+        self.ui.set_text(error_msg)
+        self.window.show()
+
     def GenerateButton(self):
         data = self.newObj.ActivePaper()
         for i in range(len(data)):
@@ -137,7 +145,8 @@ class Ui_Dashboard(object):
             print(papertbID)
             if(self.newObj.IsComplted(papertbID)):
                 # self.newObj.IsComplted(papertbID)
-                print('You Have alredy Submit answer')
+                print('You have already submitted an answer.')
+                self.error("You have already submitted an answer.")
             else:
                 print('hi ', papertbID)
                 self.window = QtWidgets.QMainWindow()
@@ -147,6 +156,7 @@ class Ui_Dashboard(object):
                 self.window.show()
         except Exception as e:
             print(f'Sorry, Cannot proceed: {str(e)}')
+            self.error(f'Sorry, Cannot proceed: {str(e)}')
 
     def retranslateUi(self, MainWindow):
 

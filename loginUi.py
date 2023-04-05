@@ -277,7 +277,7 @@ class Ui_form(object):
         sql = "SELECT user_role,email,id FROM user WHERE user_id = %s AND password = %s;"
         cursor.execute(sql, (user_id, hash_password))
         result = cursor.fetchone()
-        print(result)
+        # print(result)
         if result != None:
             if result["id"]:
                 print(result["user_role"])
