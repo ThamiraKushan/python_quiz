@@ -219,6 +219,35 @@ class File_upload_Window(object):
         self.continueBtn.clicked.connect(self.upload_File)
 
 
+# ------------------------------------------------------------------------------
+
+# class login_ui():
+#     def setupUi(self, MainWindow):
+#         MainWindow.setObjectName("MainWindow")
+#         self.widget = QtWidgets.QWidget(self.centralwidget)
+#         self.Opensignup()
+
+#     def Opensignup(self):
+#         self.window = QtWidgets.QMainWindow()
+#         self.ui = signup_form()
+#         self.ui.setupUi(self.window)
+#         MainWindow.hide()
+#         self.window.show()
+
+# class signup_form():
+#     def setupUi(self, MainWindow):
+#         MainWindow.setObjectName("MainWindow")
+#         self.widget = QtWidgets.QWidget(self.centralwidget)
+#         self.openQuiz()
+
+#     def openQuiz(self):
+#         self.window = QtWidgets.QMainWindow()
+#         self.ui = Ui_Dashboard(self.user_id)
+#         self.ui.setupUi(self.window)
+#         MainWindow.hide()
+#         self.window.show()
+
+
 if __name__ == "__main__":
     import sys
 

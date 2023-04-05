@@ -26,7 +26,8 @@ class Ui_Result(object):
 
         
 
-    def setupUi(self, MainWindow):
+    def setupUi(self, MainWindow,quizUI):
+        self.quizUI = quizUI
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(340, 380)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -192,7 +193,7 @@ class Ui_Result(object):
         # try:
         StudentMrks=StudentMrks[0]
         print(StudentMrks)
-        MyMarks=int(StudentMrks[3]/(StudentMrks[3]+StudentMrks[4]))*100
+        MyMarks=int(StudentMrks[3]/(StudentMrks[3]+StudentMrks[4])*100)
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_4.setText(_translate("MainWindow", "Results"))

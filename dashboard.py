@@ -17,10 +17,11 @@ from quiz_window import Ui_quiz
 
 class Ui_Dashboard(object):
 
-    def __init__(self,User_Id):
+    def __init__(self,User_Id,Name):
         self.PaperList=[]
         self.newObj = Quiz_bl(User_Id)
         self.User_Id = User_Id
+        self.User_Name = Name
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -142,7 +143,8 @@ class Ui_Dashboard(object):
                 print('hi ', papertbID)
                 self.window = QtWidgets.QMainWindow()
                 self.ui = Ui_quiz(papertbID, self.User_Id)
-                self.ui.setupUi(self.window)
+                # new change
+                self.ui.setupUi(self.window,self)
                 # MainWindow.hide()
                 self.window.show()
         except Exception as e:
@@ -153,7 +155,9 @@ class Ui_Dashboard(object):
         self._translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(self._translate("MainWindow", "MainWindow"))
 
+        displyName = "Welcome "+self.User_Name
         self.label.setText(self._translate("MainWindow", "QuizMaster - MIT "))
+        self.label_4.setText(self._translate("MainWindow", displyName))
 
         self.GenerateButton()
 

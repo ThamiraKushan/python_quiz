@@ -227,7 +227,8 @@ class Ui_form(object):
     def register(self, event):
         self.window = QtWidgets.QMainWindow()
         self.ui = signup_form()
-        self.ui.setupUi(self.window)
+        # new change
+        self.ui.setupUi(self.window,self)
         MainWindow.hide()
         self.window.show()
 
@@ -245,9 +246,9 @@ class Ui_form(object):
         self.window.show()
 
     # def openWindow(self,User_Id):
-    def openQuiz(self, User_Id):
+    def openQuiz(self, User_Id,Name):
         self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_Dashboard(User_Id)
+        self.ui = Ui_Dashboard(User_Id,Name)
         self.ui.setupUi(self.window)
         MainWindow.hide()
         self.window.show()
@@ -274,7 +275,7 @@ class Ui_form(object):
         #         print("login faild")
 
         cursor = db_connection.cursor(dictionary=True)
-        sql = "SELECT user_role,email,id FROM user WHERE user_id = %s AND password = %s;"
+        sql = "SELECT user_role,email,id,user_name FROM user WHERE user_id = %s AND password = %s;"
         cursor.execute(sql, (user_id, hash_password))
         result = cursor.fetchone()
         print(result)
@@ -288,7 +289,7 @@ class Ui_form(object):
                     self.openFileUpload()
                 else:
                     print("student")
-                    self.openQuiz(result["id"])
+                    self.openQuiz(result["id"],result["user_name"])
 
             else:
                 print("failed")

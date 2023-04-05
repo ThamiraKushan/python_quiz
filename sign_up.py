@@ -19,7 +19,9 @@ cursor = db_connection.cursor(dictionary=True)
 
 
 class signup_form(object):
-    def setupUi(self, MainWindow):
+    def setupUi(self, MainWindow,loginUI):
+        # new change
+        self.loginUI=loginUI
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(850, 522)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -212,7 +214,9 @@ class signup_form(object):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Dashboard(self.user_id)
         self.ui.setupUi(self.window)
-        MainWindow.hide()
+        # new change
+        self.loginUI.window.hide()
+        # MainWindow.hide()
         self.window.show()
 
     def error(self,error_msg):

@@ -39,3 +39,7 @@ class Quiz_bl(object):
 
     def IsComplted(self, Paper_Id):
         return self.Obj1.IsComplted(Paper_Id)
+
+
+
+

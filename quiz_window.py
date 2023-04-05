@@ -27,7 +27,8 @@ class Ui_quiz(object):
         self.checkPoint = 1
         self.GivenAnswers = []
 
-    def setupUi(self, MainWindow):
+    def setupUi(self, MainWindow,privusUI):
+        self.previusUI = privusUI
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(649, 429)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -167,7 +168,9 @@ class Ui_quiz(object):
                 self.newObj.InsertMaks(self.GivenAnswers,self.paperID)  
                 self.window = QtWidgets.QMainWindow()
                 self.ui = Ui_Result(self.User_id,self.paperID)
-                self.ui.setupUi(self.window)
+                self.previusUI.window.hide()
+                self.ui.setupUi(self.window,self)
+                
                 self.window.show()
         # except Exception as e:
         #     print(f'Sorry, Cannot proceed: {str(e)}')
