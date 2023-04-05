@@ -295,7 +295,7 @@ class Ui_form(object):
                 self.error("Something went wrong! Please try again.")
         else:
             print("failed")
-            self.error("Please enter valid credentials again.")
+            self.error("Please enter valid credentials.")
 
 
 if __name__ == "__main__":
