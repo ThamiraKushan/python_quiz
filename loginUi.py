@@ -259,7 +259,7 @@ class Ui_form(object):
         self.ui.setupUi(self.window)
         MainWindow.hide()
         self.window.show()
-
+# gfgfgfg
     def checkUser(self):
         user_id = self.lineEdit.text()
         password = self.lineEdit_2.text()
