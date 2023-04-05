@@ -254,6 +254,9 @@ class Ui_form(object):
         # MainWindow.hide()
         self.window.show()
 
+
+
+
     def openFileUpload(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = File_upload_Window()
