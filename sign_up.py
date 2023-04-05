@@ -212,7 +212,7 @@ class signup_form(object):
 
     def openQuiz(self):
         self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_Dashboard(self.user_id)
+        self.ui = Ui_Dashboard(self.user_id,"")
         self.ui.setupUi(self.window)
         # new change
         self.loginUI.window.hide()
@@ -256,8 +256,8 @@ class signup_form(object):
             if result == []:
                 user_exists = False
                 print(user_exists)
-                sql = "INSERT INTO user (id, user_id, password, email, status, user_role) VALUES (%s,%s,%s,%s,%s,%s)"
-                values = (None, self.user_id, hash_password,
+                sql = "INSERT INTO user (id, user_id,user_name, password, email, status, user_role) VALUES (%s,%s,%s,%s,%s,%s,%s)"
+                values = (None, self.user_id,'kln', hash_password,
                           email, status, user_role)
                 cursor.execute(sql, values)
                 db_connection.commit()
