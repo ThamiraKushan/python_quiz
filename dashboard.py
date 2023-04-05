@@ -181,7 +181,7 @@ class Ui_Dashboard(object):
         displyName = "Welcome "+self.User_Name
         self.label.setText(self._translate("MainWindow", "QuizMaster - MIT "))
         self.label_4.setText(self._translate("MainWindow", displyName))
-
+# asa
         if(self.UserRole=='admin'):
             # self.pushButton_3 = QtWidgets.QPushButton(self.frame_2)
             # self.pushButton_3.setGeometry(QtCore.QRect(30, 230, 137, 72))
