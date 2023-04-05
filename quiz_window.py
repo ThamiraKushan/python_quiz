@@ -145,17 +145,13 @@ class Ui_quiz(object):
         self.retranslateUi(MainWindow, self.data)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def error(self,error_msg):
-        self.window = QtWidgets.QMainWindow()
-        self.ui = error_box()
-        self.ui.setupUi(self.window)
-        self.ui.set_text(error_msg)
-        self.window.show()
+    
 
 # ........................
         def clicked():
             if self.answer!='':
                 # print(self.answer)
+                # sssss
                 self.current_question = self.current_question+1
                 self.GivenAnswers.append(self.answer)
                 self.retranslateUi(MainWindow, self.data)
@@ -164,6 +160,12 @@ class Ui_quiz(object):
                 self.error("please select a answer")
         self.pushButton.clicked.connect(clicked)
         # .............
+    def error(self,error_msg):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = error_box()
+        self.ui.setupUi(self.window)
+        self.ui.set_text(error_msg)
+        self.window.show()
 
     # open new window
     def Open_ResultWindow(self):
